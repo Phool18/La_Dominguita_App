@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- ... tus otros estilos ... -->
+
+    <style name="CustomButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">#A63D40</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:padding">10dp</item>
+        <item name="cornerRadius">16dp</item> <!-- Bordes ovalados -->
+    </style>
+
+</resources>

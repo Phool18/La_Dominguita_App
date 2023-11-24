@@ -11,6 +11,13 @@ public class Cliente {
 
     private Foto foto;
 
+    public Cliente() {
+    }
+
+    public Cliente(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

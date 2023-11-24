@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="40dp"
+    android:background="#FFECD1">
+
+    <ImageView
+        android:id="@+id/imagenLogo"
+        android:layout_width="320dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textoBienvenida"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imagenLogo"
+        android:layout_marginTop="30dp"
+        android:text="Bienvenido a la pastelería La Dominga, ten por seguro que encontrarás productos de calidad"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/botonIniciarSesionIdc"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/textoBienvenida"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="10dp"
+        style="@style/CustomButtonStyle"
+        android:text="Iniciar Sesión" />
+
+    <Button
+        android:id="@+id/botonRegistrarteIdc"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/botonIniciarSesionIdc"
+        android:layout_marginTop="10dp"
+        style="@style/CustomButtonStyle"
+        android:text="Registrarte" />
+
+</RelativeLayout>

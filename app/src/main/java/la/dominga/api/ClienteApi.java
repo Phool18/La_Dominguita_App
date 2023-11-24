@@ -11,5 +11,5 @@ public interface ClienteApi {
     String base = "/cliente";
 
     @POST(base)
-    Call<RespuestaServidor<Cliente>> guardarCliente(@Body Cliente c);
+    Call<RespuestaServidor<Cliente>> save(@Body Cliente c);
 }

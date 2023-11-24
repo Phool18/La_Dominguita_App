@@ -45,9 +45,9 @@ public class UsuarioRepository {
         return mld;
     }
 
-    public LiveData<RespuestaServidor<Usuario>> guardarUsuario(Usuario usuario){
+    public LiveData<RespuestaServidor<Usuario>> save (Usuario u){
         final MutableLiveData<RespuestaServidor<Usuario>> mld = new MutableLiveData<>();
-        this.api.save(usuario).enqueue(new Callback<RespuestaServidor<Usuario>>() {
+        this.api.save(u).enqueue(new Callback<RespuestaServidor<Usuario>>() {
             @Override
             public void onResponse(Call<RespuestaServidor<Usuario>> call, Response<RespuestaServidor<Usuario>> response) {
                 mld.setValue(response.body());
@@ -56,10 +56,11 @@ public class UsuarioRepository {
             @Override
             public void onFailure(Call<RespuestaServidor<Usuario>> call, Throwable t) {
                 mld.setValue(new RespuestaServidor<>());
-                System.out.println("SE HA PRODUCIDO UN ERROR: "+ t.getMessage());
+                System.out.println("Se ha producido un error : " + t.getMessage());
                 t.printStackTrace();
             }
         });
         return mld;
     }
+
 }

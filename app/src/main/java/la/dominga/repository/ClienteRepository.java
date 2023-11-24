@@ -29,7 +29,7 @@ public class ClienteRepository {
 
     public LiveData<RespuestaServidor<Cliente>> guardarCliente(Cliente cliente){
         final MutableLiveData<RespuestaServidor<Cliente>> mld = new MutableLiveData<>();
-        this.api.guardarCliente(cliente).enqueue(new Callback<RespuestaServidor<Cliente>>() {
+        this.api.save(cliente).enqueue(new Callback<RespuestaServidor<Cliente>>() {
             @Override
             public void onResponse(Call<RespuestaServidor<Cliente>> call, Response<RespuestaServidor<Cliente>> response) {
                 mld.setValue(response.body());

@@ -19,11 +19,12 @@ public class ConfigApi {
 
     public static final String baseUrlE = "http://10.0.2.2:8080";
 
-    private static ClienteApi clienteApi;
-    private static UsuarioApi usuarioApi;
     private static Retrofit retrofit;
-
     private static String token = "";
+    private static UsuarioApi usuarioApi;
+    private static ClienteApi clienteApi;
+
+    private static FotoApi fotoApi;
 
     static {
         initClient();
@@ -39,7 +40,6 @@ public class ConfigApi {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(getClient())
                 .build();
-
     }
 
     public static OkHttpClient getClient() {
@@ -57,21 +57,36 @@ public class ConfigApi {
                 .addNetworkInterceptor(stetho);
         return builder.build();
     }
+
     public static void setToken(String value) {
         token = value;
         initClient();
     }
-    public static ClienteApi getClienteApi(){
-        if(clienteApi == null){
+
+    public static UsuarioApi getUsuarioApi() {
+        if (usuarioApi == null) {
+            usuarioApi = retrofit.create(UsuarioApi.class);
+        }
+        return usuarioApi;
+    }
+
+    public static ClienteApi getClienteApi() {
+        if (clienteApi == null) {
             clienteApi = retrofit.create(ClienteApi.class);
         }
         return clienteApi;
     }
 
-    public static UsuarioApi getUsuarioApi(){
-        if(usuarioApi == null){
-            usuarioApi = retrofit.create(UsuarioApi.class);
+    public static FotoApi getFotoApi() {
+        if (fotoApi == null) {
+            fotoApi = retrofit.create(FotoApi.class);
         }
-        return usuarioApi;
+        return fotoApi;
     }
+
+
+
+
+
+
 }

@@ -8,7 +8,6 @@ import androidx.lifecycle.LiveData;
 
 import org.jetbrains.annotations.NotNull;
 
-import la.dominga.entity.Cliente;
 import la.dominga.entity.RespuestaServidor;
 import la.dominga.entity.Usuario;
 import la.dominga.repository.UsuarioRepository;
@@ -27,7 +26,7 @@ public class UsuarioViewModel extends AndroidViewModel {
     }
 
     public LiveData<RespuestaServidor<Usuario>> save(Usuario usuario){
-        return repository.guardarUsuario(usuario);
+        return repository.save(usuario);
     }
 
 }
