@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ConfigApi {
 
-    public static final String baseUrlE = "http://10.0.2.2:8080";
+    public static final String baseUrlE = "https://ladominguitaapi-production.up.railway.app/";
 
     private static Retrofit retrofit;
     private static String token = "";

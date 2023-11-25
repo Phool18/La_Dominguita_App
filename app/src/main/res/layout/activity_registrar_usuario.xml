@@ -1,181 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="40dp"
+    android:orientation="vertical"
     android:background="#FFECD1">
 
-    <ImageView
-        android:id="@+id/imagenLogo"
-        android:layout_width="200dp"
-        android:layout_height="120dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/logo" />
-
-    <LinearLayout
-        android:id="@+id/layoutFotoPerfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/imagenLogo"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:background="@drawable/background_circular">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/fotoPerfil"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/image_not_found"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSubirImagen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/CustomButtonStyle"
-            android:layout_marginTop="8dp"
-            android:text="Subir Imagen"
-            android:textSize="12sp" />
-    </LinearLayout>
-
-    <ImageButton
-        android:id="@+id/botonRegresar"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="310dp"
-        android:background="?android:selectableItemBackground"
-        android:src="@android:drawable/ic_media_previous"
-        app:tint="#000000"
-        android:contentDescription="@string/regresar" />
-
-    <TextView
-        android:id="@+id/textoBienvenida"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layoutFotoPerfil"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Crear Nueva Cuenta"
-        android:textColor="#000000"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/textoInstrucciones"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textoBienvenida"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="Ingresa tus datos en los campos de abajo"
-        android:textColor="#000000"
-        android:textSize="15sp" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputNombreCompleto"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textoInstrucciones"
-        android:layout_marginTop="20dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtcampoNombreCompleto"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre Completo"
-            android:inputType="textPersonName"
-            android:textColor="#000000"
-            android:padding="15dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:padding="40dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputCorreoElectronico"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textInputNombreCompleto"
-        android:layout_marginTop="15dp">
+            <ImageView
+                android:id="@+id/imagenLogo"
+                android:layout_width="200dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/logo" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtcampoCorreoElectronico"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Dirección de correo electrónico"
-            android:inputType="textEmailAddress"
-            android:textColor="#000000"
-            android:padding="15dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
+                android:id="@+id/layoutFotoPerfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/imagenLogo"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/background_circular">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputTelefono"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textInputCorreoElectronico"
-        android:layout_marginTop="15dp">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/fotoPerfil"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/image_not_found"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="#FF000000"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtcampoTelefono"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Número Telefónico"
-            android:inputType="phone"
-            android:textColor="#000000"
-            android:padding="15dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSubirImagen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CustomButtonStyle"
+                    android:layout_marginTop="8dp"
+                    android:text="Subir Imagen"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputContrasena"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textInputTelefono"
-        android:layout_marginTop="15dp">
+            <ImageButton
+                android:id="@+id/botonRegresar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="310dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@android:drawable/ic_media_previous"
+                app:tint="#000000"
+                android:contentDescription="@string/regresar" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtcampoContraseña"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:textColor="#000000"
-            android:padding="15dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/textoBienvenida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layoutFotoPerfil"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Crear Nueva Cuenta"
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/botonCrearCuenta"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@id/textInputContrasena"
-        android:layout_marginTop="20dp"
-        style="@style/CustomButtonStyle"
-        android:text="Crear Cuenta" />
+            <TextView
+                android:id="@+id/textoInstrucciones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textoBienvenida"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:text="Ingresa tus datos en los campos de abajo"
+                android:textColor="#000000"
+                android:textSize="15sp" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/botonCrearCuenta"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputNombreCompleto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textoInstrucciones"
+                android:layout_marginTop="20dp">
 
-        <TextView
-            android:id="@+id/textoYaTienesCuenta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="¿Ya tienes una cuenta? "
-            android:textColor="#000000"
-            android:textSize="16sp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtcampoNombreCompleto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre Completo"
+                    android:inputType="textPersonName"
+                    android:textColor="#000000"
+                    android:padding="15dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/textoIniciarSesion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Iniciar Sesión"
-            android:textColor="#A63D40"
-            android:textSize="16sp" />
-    </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputCorreoElectronico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textInputNombreCompleto"
+                android:layout_marginTop="15dp">
 
-</RelativeLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtcampoCorreoElectronico"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Dirección de correo electrónico"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#000000"
+                    android:padding="15dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textInputCorreoElectronico"
+                android:layout_marginTop="15dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtcampoTelefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Número Telefónico"
+                    android:inputType="phone"
+                    android:textColor="#000000"
+                    android:padding="15dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textInputTelefono"
+                android:layout_marginTop="15dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtcampoContraseña"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:textColor="#000000"
+                    android:padding="15dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/botonCrearCuenta"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/textInputContrasena"
+                android:layout_marginTop="20dp"
+                style="@style/CustomButtonStyle"
+                android:text="Crear Cuenta" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/botonCrearCuenta"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textoYaTienesCuenta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¿Ya tienes una cuenta? "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textoIniciarSesion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Iniciar Sesión"
+                    android:textColor="#A63D40"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>
