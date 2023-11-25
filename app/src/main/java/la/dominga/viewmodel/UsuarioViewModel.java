@@ -8,6 +8,8 @@ import androidx.lifecycle.LiveData;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 import la.dominga.entity.RespuestaServidor;
 import la.dominga.entity.Usuario;
 import la.dominga.repository.UsuarioRepository;
@@ -28,5 +30,20 @@ public class UsuarioViewModel extends AndroidViewModel {
     public LiveData<RespuestaServidor<Usuario>> save(Usuario usuario){
         return repository.save(usuario);
     }
+
+
+    public LiveData<RespuestaServidor<List<Usuario>>> listarUsuarios() {
+        return repository.listarUsuarios();
+    }
+
+    public LiveData<RespuestaServidor<Usuario>> actualizarUsuario(Usuario usuario) {
+        return repository.actualizarUsuario(usuario);
+    }
+
+    public LiveData<RespuestaServidor<List<Usuario>>> buscarUsuarioPorNombre(String nombreCompleto) {
+        return repository.buscarUsuarioPorNombre(nombreCompleto);
+    }
+
+
 
 }

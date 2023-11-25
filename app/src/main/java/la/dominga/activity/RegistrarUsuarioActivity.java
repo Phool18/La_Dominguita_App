@@ -3,7 +3,6 @@ package la.dominga.activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -33,10 +32,10 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import de.hdodenhof.circleimageview.CircleImageView;
 import la.dominga.R;
 import la.dominga.entity.Cliente;
-import la.dominga.entity.Foto;
+import la.dominga.entity.Picture;
 import la.dominga.entity.Usuario;
 import la.dominga.viewmodel.ClienteViewModel;
-import la.dominga.viewmodel.FotoViewModel;
+import la.dominga.viewmodel.PictureViewModel;
 import la.dominga.viewmodel.UsuarioViewModel;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -51,7 +50,7 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
     private UsuarioViewModel usuarioViewModel;
     private ClienteViewModel clienteViewModel;
     private File f;
-    private FotoViewModel fotoViewModel;
+    private PictureViewModel fotoViewModel;
     private CircleImageView fotoPerfil;
 
     private TextInputLayout textInputNombreCompleto, textInputCorreoElectronico, textInputTelefono, textInputContrasena; //god
@@ -69,7 +68,7 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
         final ViewModelProvider vmp = new ViewModelProvider(this);
         this.clienteViewModel = vmp.get(ClienteViewModel.class);
         this.usuarioViewModel = vmp.get(UsuarioViewModel.class);
-        this.fotoViewModel = vmp.get(FotoViewModel.class);
+        this.fotoViewModel = vmp.get(PictureViewModel.class);
     }
 
     @Override
@@ -226,7 +225,7 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
                 somedata = RequestBody.create("profilePh" + filename, MediaType.parse("text/plain"));
                 this.fotoViewModel.save(part, somedata).observe(this, response -> {
                     if (response.getRpta() == 1) {
-                        c.setFoto(new Foto());
+                        c.setFoto(new Picture());
                         c.getFoto().setId(response.getBody().getId());
                         this.clienteViewModel.guardarCliente(c).observe(this, cResponse -> {
                             if (cResponse.getRpta() == 1) {
@@ -280,7 +279,7 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
     }
     public void toastIncorrecto(String msg) {
         LayoutInflater layoutInflater = getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.toast_er, (ViewGroup) findViewById(R.id.ll_custom_toast_error));
+        View view = layoutInflater.inflate(R.layout.error, (ViewGroup) findViewById(R.id.ll_custom_toast_error));
         TextView txtMensaje = view.findViewById(R.id.txtMensajeToast2);
         txtMensaje.setText(msg);
 
@@ -353,7 +352,7 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
     }
     public void toastRegistrado(String msg) {
         LayoutInflater layoutInflater = getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.custom_toast_registrado, (ViewGroup) findViewById(R.id.ll_custom_toast_registrado));
+        View view = layoutInflater.inflate(R.layout.mensaje, (ViewGroup) findViewById(R.id.ll_custom_toast_registrado));
         TextView txtMensaje = view.findViewById(R.id.txtMensajeRegistrado);
         txtMensaje.setText(msg);
 

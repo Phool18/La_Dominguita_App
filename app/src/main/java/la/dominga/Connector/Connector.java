@@ -1,4 +1,4 @@
-package la.dominga.api;
+package la.dominga.Connector;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
@@ -15,16 +15,19 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ConfigApi {
+public class Connector {
 
     public static final String baseUrlE = "https://ladominguitaapi-production.up.railway.app/";
 
     private static Retrofit retrofit;
     private static String token = "";
-    private static UsuarioApi usuarioApi;
-    private static ClienteApi clienteApi;
-
-    private static FotoApi fotoApi;
+    private static UsuarioGateway usuarioApi;
+    private static ClienteGateway clienteApi;
+    private static PictureGateway fotoApi;
+    private static TarjetaCreditoGateway tarjetaCreditoApi;
+    private static CategoriaGateway categoriaApi;
+    private static CarritoDeComprasGateway carritoDeComprasApi;
+    private static ProductoGateway productoApi;
 
     static {
         initClient();
@@ -63,28 +66,55 @@ public class ConfigApi {
         initClient();
     }
 
-    public static UsuarioApi getUsuarioApi() {
+    public static UsuarioGateway getUsuarioApi() {
         if (usuarioApi == null) {
-            usuarioApi = retrofit.create(UsuarioApi.class);
+            usuarioApi = retrofit.create(UsuarioGateway.class);
         }
         return usuarioApi;
     }
 
-    public static ClienteApi getClienteApi() {
+    public static ClienteGateway getClienteApi() {
         if (clienteApi == null) {
-            clienteApi = retrofit.create(ClienteApi.class);
+            clienteApi = retrofit.create(ClienteGateway.class);
         }
         return clienteApi;
     }
 
-    public static FotoApi getFotoApi() {
+    public static PictureGateway getFotoApi() {
         if (fotoApi == null) {
-            fotoApi = retrofit.create(FotoApi.class);
+            fotoApi = retrofit.create(PictureGateway.class);
         }
         return fotoApi;
     }
 
+    // Agregados los nuevos APIs
+    public static TarjetaCreditoGateway getTarjetaCreditoApi() {
+        if (tarjetaCreditoApi == null) {
+            tarjetaCreditoApi = retrofit.create(TarjetaCreditoGateway.class);
+        }
+        return tarjetaCreditoApi;
+    }
 
+    public static CategoriaGateway getCategoriaApi() {
+        if (categoriaApi == null) {
+            categoriaApi = retrofit.create(CategoriaGateway.class);
+        }
+        return categoriaApi;
+    }
+
+    public static CarritoDeComprasGateway getCarritoDeComprasApi() {
+        if (carritoDeComprasApi == null) {
+            carritoDeComprasApi = retrofit.create(CarritoDeComprasGateway.class);
+        }
+        return carritoDeComprasApi;
+    }
+
+    public static ProductoGateway getProductoApi() {
+        if (productoApi == null) {
+            productoApi = retrofit.create(ProductoGateway.class);
+        }
+        return productoApi;
+    }
 
 
 

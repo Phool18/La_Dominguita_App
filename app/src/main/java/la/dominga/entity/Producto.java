@@ -15,11 +15,11 @@ public class Producto {
 
     private Categoria categoria;
 
-    private Foto foto;
+    private Picture foto;
     public Producto() {
     }
 
-    public Producto(int id, String nombre, String descripcion, double precio, int cantidadEnStock, Categoria categoria, Foto foto) {
+    public Producto(int id, String nombre, String descripcion, double precio, int cantidadEnStock, Categoria categoria, Picture foto) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -69,11 +69,11 @@ public class Producto {
         this.cantidadEnStock = cantidadEnStock;
     }
 
-    public Foto getFoto() {
+    public Picture getFoto() {
         return foto;
     }
 
-    public void setFoto(Foto foto) {
+    public void setFoto(Picture foto) {
         this.foto = foto;
     }
 

@@ -162,7 +162,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
     public void toastCorrecto(String msg) {
         LayoutInflater layoutInflater = getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.toast_good, (ViewGroup) findViewById(R.id.ll_custom_toast_ok));
+        View view = layoutInflater.inflate(R.layout.ok, (ViewGroup) findViewById(R.id.ll_custom_toast_ok));
         TextView txtMensaje = view.findViewById(R.id.txtMensajeToast1);
         txtMensaje.setText(msg);
 
@@ -174,7 +174,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
     }
     public void toastIncorrecto(String msg) {
         LayoutInflater layoutInflater = getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.toast_er, (ViewGroup) findViewById(R.id.ll_custom_toast_error));
+        View view = layoutInflater.inflate(R.layout.error, (ViewGroup) findViewById(R.id.ll_custom_toast_error));
         TextView txtMensaje = view.findViewById(R.id.txtMensajeToast2);
         txtMensaje.setText(msg);
 

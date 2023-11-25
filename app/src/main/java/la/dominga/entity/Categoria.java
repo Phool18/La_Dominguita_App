@@ -8,12 +8,12 @@ public class Categoria {
 
     private String nombre;
 
-    private Foto foto;
+    private Picture foto;
 
     public Categoria() {
     }
 
-    public Categoria(int id, String nombre, Foto foto) {
+    public Categoria(int id, String nombre, Picture foto) {
         this.id = id;
         this.nombre = nombre;
         this.foto = foto;
@@ -35,11 +35,11 @@ public class Categoria {
         this.nombre = nombre;
     }
 
-    public Foto getFoto() {
+    public Picture getFoto() {
         return foto;
     }
 
-    public void setFoto(Foto foto) {
+    public void setFoto(Picture foto) {
         this.foto = foto;
     }
 }

@@ -2,7 +2,7 @@ package la.dominga.entity;
 
 import okhttp3.MultipartBody;
 
-public class Foto {
+public class Picture {
 
     private long id;
     private String nombreFoto;
@@ -15,7 +15,7 @@ public class Foto {
 
     private String urlFile;
 
-    public Foto() {
+    public Picture() {
         id = 0;
         nombreFoto = "";
         nombreArchivo = "";
