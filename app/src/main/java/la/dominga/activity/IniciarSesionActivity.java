@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
     private EditText edtcampoCorreoElectronico, edtcampoContraseña;
     private Button botonIniciarSesion;
+    private ImageButton btnLogAtras;
     private UsuarioViewModel viewModel;
     private TextInputLayout textInputCorreoElectronico, textInputContrasena;
     private TextView textoCrearCuenta;
@@ -54,6 +56,8 @@ public class IniciarSesionActivity extends AppCompatActivity {
     private void init(){
         edtcampoCorreoElectronico = findViewById(R.id.edtcampoCorreoElectronico);
         edtcampoContraseña = findViewById(R.id.edtcampoContraseña);
+        btnLogAtras = findViewById(R.id.btnLogAtras);
+
         textInputCorreoElectronico = findViewById(R.id.textInputCorreoElectronico);
         textInputContrasena = findViewById(R.id.textInputContrasena);
         textoCrearCuenta = findViewById(R.id.textoCrearCuenta);
@@ -86,6 +90,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
             }catch (Exception e){
                 toastIncorrecto("Se ha producido un error al intentar loguearte : " + e.getMessage());
             }
+
         });
         textoCrearCuenta.setOnClickListener(v -> {
             Intent i = new Intent(this, RegistrarUsuarioActivity.class);
@@ -124,7 +129,15 @@ public class IniciarSesionActivity extends AppCompatActivity {
 
             }
         });
-
+        btnLogAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inicia InicioActivity
+                Intent intent = new Intent(IniciarSesionActivity.this, InicioActivity.class);
+                startActivity(intent);
+                finish(); // Finaliza la actividad actual (opcional)
+            }
+        });
 
     }
     private boolean validar() {
@@ -171,4 +184,6 @@ public class IniciarSesionActivity extends AppCompatActivity {
         toast.setView(view);
         toast.show();
     }
+
+
 }

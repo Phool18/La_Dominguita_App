@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.material.textfield.TextInputLayout;
@@ -45,6 +46,8 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
 
     private EditText edtcampoNombreCompleto, edtcampoCorreoElectronico, edtcampoTelefono, edtcampoContraseña; //god
     private Button botonCrearCuenta, btnSubirImagen;
+
+    private ImageButton btnRegistroAtras;
     private UsuarioViewModel usuarioViewModel;
     private ClienteViewModel clienteViewModel;
     private File f;
@@ -99,6 +102,7 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
         //BOTONES
         botonCrearCuenta = findViewById(R.id.botonCrearCuenta);
         btnSubirImagen = findViewById(R.id.btnSubirImagen);
+        btnRegistroAtras = findViewById(R.id.btnRegistroAtras);
         //DATOS USUARIO
 
         fotoPerfil = findViewById(R.id.fotoPerfil);
@@ -138,49 +142,64 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
         edtcampoCorreoElectronico.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                textInputCorreoElectronico.setErrorEnabled(false);
+                if (!s.toString().contains("@example")) {
+                    textInputCorreoElectronico.setError("Solo se permite correo con @example");
+                } else {
+                    textInputCorreoElectronico.setErrorEnabled(false);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
         edtcampoTelefono.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                textInputTelefono.setErrorEnabled(false);
+                if (s.length() != 9) {
+                    textInputTelefono.setError("Solo se permite 9 números");
+                } else {
+                    textInputTelefono.setErrorEnabled(false);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
         edtcampoContraseña.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                textInputContrasena.setErrorEnabled(false);
+                if (s.length() < 5) {
+                    textInputContrasena.setError("La contraseña debe tener 5 caracteres mínimo");
+                } else {
+                    textInputContrasena.setErrorEnabled(false);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+            }
+        });
+        btnRegistroAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inicia InicioActivity
+                Intent intent = new Intent(RegistrarUsuarioActivity.this, InicioActivity.class);
+                startActivity(intent);
+                finish(); // Finaliza la actividad actual (opcional)
             }
         });
     }
@@ -297,24 +316,38 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
     }
     private boolean validar() {
         boolean retorno = true;
-        String nombrecompleto, telefono;
+        String nombrecompleto, telefono,correo,contrasena;
         nombrecompleto = edtcampoNombreCompleto.getText().toString();
         telefono = edtcampoTelefono.getText().toString();
+        correo = edtcampoCorreoElectronico.getText().toString();
+        contrasena = edtcampoContraseña.getText().toString();
         if (this.f == null) {
             errorMessage("debe selecionar una foto de perfil");
             retorno = false;
         }
         if (nombrecompleto.isEmpty()) {
-            textInputNombreCompleto.setError("Ingresar nombres");
+            textInputNombreCompleto.setError("Ingresar nombres completos");
             retorno = false;
         } else {
             textInputNombreCompleto.setErrorEnabled(false);
         }
         if (telefono.isEmpty()) {
-            textInputTelefono.setError("Ingresar numero de celular");
+            textInputTelefono.setError("Ingresar numero de celular MIN Y MAX 9 DIGITOS");
             retorno = false;
         } else {
             textInputTelefono.setErrorEnabled(false);
+        }
+        if (contrasena.isEmpty()) {
+            textInputContrasena.setError("Ingresar correo @example.com");
+            retorno = false;
+        } else {
+            textInputContrasena.setErrorEnabled(false);
+        }
+        if (correo.isEmpty()) {
+            textInputCorreoElectronico.setError("Ingresar Contraseña +5 DIGITOS");
+            retorno = false;
+        } else {
+            textInputCorreoElectronico.setErrorEnabled(false);
         }
         return retorno;
     }
@@ -330,4 +363,6 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
         toast.setView(view);
         toast.show();
     }
+
+
 }

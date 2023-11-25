@@ -27,7 +27,6 @@ public class InicioActivity extends AppCompatActivity {
                 startActivity(intentIniciarSesion);
             }
         });
-
         botonRegistrarteIdc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
