@@ -13,10 +13,15 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.util.List;
+
 import la.dominga.R;
 import la.dominga.adapter.CategoriaAdapter;
 import la.dominga.adapter.OfertaAdapter;
+import la.dominga.adapter.ProductoTopAdapter;
+import la.dominga.entity.Producto;
 import la.dominga.viewmodel.CategoriaViewModel;
+import la.dominga.viewmodel.ProductoViewModel;
 
 public class PanFragment extends Fragment {
 
@@ -24,6 +29,9 @@ public class PanFragment extends Fragment {
     private CategoriaAdapter categoriaAdapter;
     private RecyclerView rcvCategorias;
     private ViewPager viewPagerOfertas;
+
+    private RecyclerView rvMasVendidos;
+    private ProductoViewModel productoViewModel;
 
     public PanFragment() {
         // Required empty public constructor
@@ -63,17 +71,8 @@ public class PanFragment extends Fragment {
         });
 
 
-
-
-
-
-
-
-
-
-
-
-
+        rvMasVendidos = view.findViewById(R.id.rvMasVendidos);
+        inicializarRvMasVendidos();
         initViewModel();
         setupRecyclerView(view);
         loadCategorias();
@@ -99,6 +98,18 @@ public class PanFragment extends Fragment {
             } else {
                 Toast.makeText(getContext(), "No se encontraron categorías", Toast.LENGTH_SHORT).show();
             }
+        });
+    }
+    private void inicializarRvMasVendidos() {
+        productoViewModel = new ViewModelProvider(this).get(ProductoViewModel.class);
+        productoViewModel.listarProductosTop().observe(getViewLifecycleOwner(), respuesta -> {
+            if (respuesta != null && respuesta.getRpta() == 1) {
+                List<Producto> productos = respuesta.getBody();
+                ProductoTopAdapter adapter = new ProductoTopAdapter(getContext(), productos);
+                rvMasVendidos.setAdapter(adapter);
+                rvMasVendidos.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+            }
+            // Puedes manejar aquí los casos en los que no se reciban datos
         });
     }
 
