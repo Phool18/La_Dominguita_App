@@ -7,5 +7,21 @@
         <item name="android:padding">10dp</item>
         <item name="cornerRadius">16dp</item> <!-- Bordes ovalados -->
     </style>
+    <style name="customboton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">#A63D40</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:padding">10dp</item>
+        <item name="cornerRadius">16dp</item> <!-- Bordes ovalados -->
+    </style>
+    <style name="customcerrar" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">#35345C</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:padding">10dp</item>
+        <item name="cornerRadius">16dp</item> <!-- Bordes ovalados -->
+    </style>
+    <style name="EditTextWhiteTextStyle" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:textColor">#FFFFFF</item>
+        <!-- Aquí puedes agregar otros atributos comunes si los necesitas -->
+    </style>
 
 </resources>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Encabezado con Botón Atrás y Título -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp">
+
+            <ImageButton
+                android:id="@+id/btnLogAtras"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="?android:selectableItemBackground"
+                android:src="@android:drawable/ic_media_previous"
+                app:tint="#000000"
+                android:contentDescription="@string/regresar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Editar Perfil"
+                android:layout_marginLeft="20dp"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+        </LinearLayout>
+
+        <!-- Sección de Información Personal -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Información Personal"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginBottom="15dp"/>
+
+        <!-- Campo de Nombre -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputNombre"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:boxBackgroundColor="#432534"
+            android:textColorHint="@color/white"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:hintTextColor="#FFFFFF">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtcampoNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre Completo"
+                android:inputType="textPersonName"
+                android:textColor="#FFFFFF"
+                android:padding="12dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Campo de Correo Electrónico -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputCorreoElectronico"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:boxBackgroundColor="#432534"
+            android:textColorHint="@color/white"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:hintTextColor="#FFFFFF">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtcampoCorreoElectronico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo Electrónico"
+                android:inputType="textEmailAddress"
+                android:textColor="#FFFFFF"
+                android:padding="12dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Campo de Número Telefónico -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputNumeroTelefonico"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:boxBackgroundColor="#432534"
+            android:textColorHint="@color/white"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:hintTextColor="#FFFFFF">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtcampoNumeroTelefonico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Número Telefónico"
+                android:inputType="phone"
+                android:textColor="#FFFFFF"
+                android:padding="12dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Sección de Métodos de Pago -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Métodos de Pago"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMetodosPago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"/>
+
+        <!-- Botón para Agregar Método de Pago -->
+        <Button
+            android:id="@+id/btnAgregarMetodoPago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar Nuevo Método"
+            style="@style/customboton"
+            android:drawableLeft="@drawable/ic_add"
+            android:drawablePadding="15dp"
+            android:textColor="#FFFFFF"
+            android:background="#432534"
+            android:layout_marginBottom="20dp"
+            android:textStyle="bold"/>
+
+        <!-- Botón para Guardar Datos -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="225dp"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/btnGuardarDatos"
+                style="@style/customboton"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:background="#A63D40"
+                android:text="Guardar Datos"
+                android:textSize="13sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

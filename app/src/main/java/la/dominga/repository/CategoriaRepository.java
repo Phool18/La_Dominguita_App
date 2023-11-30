@@ -32,7 +32,7 @@ public class CategoriaRepository {
 
     public LiveData<RespuestaServidor<List<Categoria>>> listarCategoriasBD(){
         final MutableLiveData<RespuestaServidor<List<Categoria>>> mld = new MutableLiveData<>();
-        this.api.listarCategoriasBD().enqueue(new Callback<RespuestaServidor<List<Categoria>>>() {
+        this.api.listarNombresDeCategorias().enqueue(new Callback<RespuestaServidor<List<Categoria>>>() {
             @Override
             public void onResponse(Call<RespuestaServidor<List<Categoria>>> call, Response<RespuestaServidor<List<Categoria>>> response) {
                 mld.setValue(response.body());

@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#A63D40" android:state_checked="true"/> <!-- Color cuando está activo -->
+    <item android:color="#CCCCCC"/> <!-- Color por defecto -->
+</selector>

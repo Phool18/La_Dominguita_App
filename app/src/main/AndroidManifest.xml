@@ -19,30 +19,41 @@
         android:theme="@style/Theme.La_Dominguita"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
-        <!-- InicioActivity configurada como la actividad de inicio -->
         <activity
-            android:name=".activity.InicioActivity"
+            android:name=".activity.Inicio.ListarProductosPorBotonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.Inicio.EditarPerfilActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.vista.UserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.vista.PanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.vista.SomberoActivity"
+            android:exported="false" /> <!-- InicioActivity configurada como la actividad de inicio -->
+        <activity
+            android:name=".activity.Inicio.InicioActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Otras actividades de la aplicación -->
+        </activity> <!-- Otras actividades de la aplicación -->
         <activity
-            android:name=".activity.IniciarSesionActivity"
+            android:name=".activity.Inicio.IniciarSesionActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.RegistrarUsuarioActivity"
+            android:name=".activity.Inicio.RegistrarUsuarioActivity"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:theme="@style/Theme.La_Dominguita.NoActionBar" />
-
     </application>
 
 </manifest>

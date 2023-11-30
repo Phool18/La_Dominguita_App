@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvPerfilTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Perfil"
+            android:layout_marginTop="30dp"
+            android:textSize="35dp"
+            android:textStyle="bold"
+            android:textColor="#432534"
+            android:gravity="center"
+
+            android:layout_marginBottom="20dp"/>
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPerfilYBotones"
+            android:layout_width="match_parent"
+            android:layout_height="552dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/flFotoPerfil"
+                android:layout_width="0dp"
+                android:layout_height="497dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="#EFD6AC">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgFotoPerfil"
+                    android:layout_width="match_parent"
+                    android:layout_height="243dp"
+                    android:layout_gravity="top|center_horizontal"
+                    android:src="@drawable/faraon" />
+
+                <LinearLayout
+                    android:id="@+id/llInformacionUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="335dp"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="center"
+                        android:text="Jean Phool Jara Ulloa"
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="center"
+                        android:text="Jean@example.com"
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:gravity="center"
+                        android:text="987654321"
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:id="@+id/llBotonesPerfil"
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnEditarPerfil"
+                    style="@style/customcerrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="16dp"
+                    android:drawableLeft="@drawable/ic_editar"
+                    android:drawableRight="@drawable/ic_flecha_derecha"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="Editar Perfil"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnHistorial"
+                    style="@style/customcerrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="16dp"
+                    android:drawableLeft="@drawable/ic_history"
+                    android:drawableRight="@drawable/ic_flecha_derecha"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="Historial"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            style="@style/customboton"
+            android:text="Cerrar Sesión"
+            android:drawableLeft="@drawable/ic_exit"
+            android:drawableRight="@drawable/ic_flecha_derecha"
+            android:drawablePadding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/button_text_color"
+            android:layout_marginTop="30dp"/>
+    </LinearLayout>
+</ScrollView>

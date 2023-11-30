@@ -1,4 +1,4 @@
-package la.dominga.activity;
+package la.dominga.activity.Inicio;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -28,6 +28,7 @@ import java.sql.Date;
 import java.sql.Time;
 
 import la.dominga.R;
+import la.dominga.activity.MainActivity;
 import la.dominga.entity.Usuario;
 import la.dominga.utils.DateSerializer;
 import la.dominga.utils.TimeSerializer;
@@ -184,6 +185,16 @@ public class IniciarSesionActivity extends AppCompatActivity {
         toast.setView(view);
         toast.show();
     }
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String pref = preferences.getString("UsuarioJson", "");
+        if(!pref.equals("")){
+            toastCorrecto("Parece que dejaste tu cuenta Abierta\n          Nos saltaremos el Login");
+            this.startActivity(new Intent(this, MainActivity.class));
+            this.overridePendingTransition(R.anim.left_in, R.anim.left_out);
+        }
+    }
 
 }

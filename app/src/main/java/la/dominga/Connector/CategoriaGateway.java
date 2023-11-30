@@ -14,7 +14,7 @@ public interface CategoriaGateway {
     String base = "/categorias";
 
     @GET(base)
-    Call<RespuestaServidor<List<Categoria>>> listarCategoriasBD();
+    Call<RespuestaServidor<List<Categoria>>> listarNombresDeCategorias();
 
     @POST(base)
     Call<RespuestaServidor<Categoria>> agregarCategoria(@Body Categoria categoria);

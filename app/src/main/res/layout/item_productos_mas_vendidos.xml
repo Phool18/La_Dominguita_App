@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="#35345C"
+    android:layout_margin="4dp">
+
+    <ImageView
+        android:id="@+id/ivProducto"
+        android:layout_width="140dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        android:src="@drawable/producto" />
+
+    <TextView
+        android:id="@+id/tvNombreProducto"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="Pastel de chocolate con fresas"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        android:textSize="14sp"/>
+
+    <LinearLayout
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="4dp">
+
+        <TextView
+            android:id="@+id/tvPrecioProducto"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="S/.12.50"
+            android:textColor="#FFFFFF"
+            android:gravity="start"
+            android:textSize="14sp"/>
+
+        <ImageButton
+            android:id="@+id/btnCarrito"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_carrito"
+            android:contentDescription="@string/carrito"/>
+    </LinearLayout>
+</LinearLayout>

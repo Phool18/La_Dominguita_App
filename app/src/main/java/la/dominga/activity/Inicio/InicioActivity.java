@@ -1,4 +1,4 @@
-package la.dominga.activity;
+package la.dominga.activity.Inicio;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;

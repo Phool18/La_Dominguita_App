@@ -1,0 +1,17 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#A63D40"/>
+            <corners android:radius="14dp"/>
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/ic_carrito"
+        android:gravity="center"
+        android:width="26dp"
+        android:height="26dp"
+        android:top="12dp"
+        android:bottom="12dp"
+        android:left="20dp"
+        android:right="20dp" />
+</layer-list>

@@ -9,5 +9,15 @@
     <string name="regresar">regresar</string>
     <string name="regresar_1">regresar</string>
     <string name="Inicio">La Dominguita APP</string>
+    <string name="buscar">buscar</string>
+    <string name="anterior">anterior</string>
+    <string name="siguiente">siguiente</string>
+    <string name="carrito">carrito</string>
+    <string name="historial">historial</string>
+    <string name="eliminar_producto">Eliminar producto</string>
+    <string name="disminuir_cantidad">Disminuir cantidad</string>
+    <string name="aumentar_cantidad">Aumentar cantidad</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

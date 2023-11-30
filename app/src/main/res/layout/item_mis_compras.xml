@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:orientation="vertical"
+    android:background="#F0F0F0">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#432534"
+        android:padding="16dp"
+        android:elevation="4dp">
+
+        <ImageView
+            android:id="@+id/imgProducto"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/producto" />
+
+        <TextView
+            android:id="@+id/tvNombreProducto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imgProducto"
+            android:layout_alignTop="@id/imgProducto"
+            android:text="Nombre Del Producto"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_marginLeft="16dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imgProducto"
+            android:layout_below="@id/tvNombreProducto"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp">
+
+            <TextView
+                android:id="@+id/tvEtiquetaPrecio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Precio: "
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvPrecio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="S/.24"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="5dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
