@@ -37,4 +37,12 @@ public class ProductoViewModel extends AndroidViewModel {
     public LiveData<RespuestaServidor<List<Producto>>> listarProductosTop(){
         return repository.listarProductosTop();
     }
+
+    public LiveData<RespuestaServidor<List<Producto>>> obtenerTodosLosProductos(){
+        return repository.listarProductosTop();
+    }
+
+    public LiveData<RespuestaServidor<Producto>> obtenerProductoPorId(int id) {
+        return repository.obtenerProductoPorId(id);
+    }
 }

@@ -1,7 +1,6 @@
 package la.dominga.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,26 +8,39 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.squareup.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
-
 import la.dominga.Connector.Connector;
 import la.dominga.R;
-import la.dominga.activity.Inicio.DetalleProductoActivity;
 import la.dominga.entity.Producto;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductoTopAdapter extends RecyclerView.Adapter<ProductoTopAdapter.ViewHolder> {
 
-    private List<Producto> listaProductos;
+    private List<Producto> listaProductos = new ArrayList<>();
     private LayoutInflater mInflater;
+    private OnProductoClickListener onProductoClickListener;
 
     // Constructor
-    public ProductoTopAdapter(Context context, List<Producto> listaProductos) {
+    public ProductoTopAdapter(Context context) {
         this.mInflater = LayoutInflater.from(context);
-        this.listaProductos = listaProductos;
+    }
+
+    // Setear lista de productos
+    public void setProductos(List<Producto> productos) {
+        this.listaProductos = productos;
+        notifyDataSetChanged();
+    }
+
+    // Interfaz para manejar clics en los productos
+    public interface OnProductoClickListener {
+        void onProductoClick(int productoId);
+    }
+
+    // Setear listener para clics en productos
+    public void setOnProductoClickListener(OnProductoClickListener listener) {
+        this.onProductoClickListener = listener;
     }
 
     @NonNull
@@ -41,11 +53,10 @@ public class ProductoTopAdapter extends RecyclerView.Adapter<ProductoTopAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Producto producto = listaProductos.get(position);
-
         holder.tvNombreProducto.setText(producto.getNombre());
         holder.tvPrecioProducto.setText("S/. " + producto.getPrecio());
 
-        if (producto.getFoto() != null && producto.getFoto().getNombreFoto() != null) {
+        if (producto.getFoto() != null && producto.getFoto().getNombreArchivo() != null) {
             String url = Connector.baseUrlE + "/foto/download/" + producto.getFoto().getNombreArchivo();
             Picasso picasso = new Picasso.Builder(holder.itemView.getContext())
                     .downloader(new OkHttp3Downloader(Connector.getClient()))
@@ -54,13 +65,13 @@ public class ProductoTopAdapter extends RecyclerView.Adapter<ProductoTopAdapter.
                     .error(R.drawable.image_not_found)
                     .into(holder.ivProducto);
         }
+
         holder.ivProducto.setOnClickListener(view -> {
-            Intent intent = new Intent(view.getContext(), DetalleProductoActivity.class);
-            intent.putExtra("productoId", producto.getId());
-            view.getContext().startActivity(intent);
+            if (onProductoClickListener != null) {
+                onProductoClickListener.onProductoClick(producto.getId());
+            }
         });
     }
-
 
     @Override
     public int getItemCount() {

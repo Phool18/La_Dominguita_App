@@ -24,4 +24,11 @@ public interface ProductoGateway {
 
     @GET(base + "/top")
     Call<RespuestaServidor<List<Producto>>> listarProductosTop();
+    @GET(base)
+    Call<RespuestaServidor<List<Producto>>> obtenerTodosLosProductos();
+
+    @GET(base +"/{id}")
+    Call<RespuestaServidor<Producto>> obtenerProductoPorId(@Path("id") int id);
+
+
 }

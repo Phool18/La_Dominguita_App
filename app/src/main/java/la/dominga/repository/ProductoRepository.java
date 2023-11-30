@@ -102,4 +102,39 @@ public class ProductoRepository {
         });
         return mld;
     }
+
+    public LiveData<RespuestaServidor<List<Producto>>> obtenerTodosLosProductos(){
+        final MutableLiveData<RespuestaServidor<List<Producto>>> mld = new MutableLiveData<>();
+        this.api.listarProductosTop().enqueue(new Callback<RespuestaServidor<List<Producto>>>() {
+            @Override
+            public void onResponse(Call<RespuestaServidor<List<Producto>>> call, Response<RespuestaServidor<List<Producto>>> response) {
+                mld.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<RespuestaServidor<List<Producto>>> call, Throwable t) {
+                mld.setValue(new RespuestaServidor<>());
+                System.out.println("Se ha producido un error: " + t.getMessage());
+                t.printStackTrace();
+            }
+        });
+        return mld;
+    }
+    public LiveData<RespuestaServidor<Producto>> obtenerProductoPorId(int id) {
+        MutableLiveData<RespuestaServidor<Producto>> data = new MutableLiveData<>();
+
+        api.obtenerProductoPorId(id).enqueue(new Callback<RespuestaServidor<Producto>>() {
+            @Override
+            public void onResponse(Call<RespuestaServidor<Producto>> call, Response<RespuestaServidor<Producto>> response) {
+                data.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<RespuestaServidor<Producto>> call, Throwable t) {
+                // Manejar el caso de error
+            }
+        });
+
+        return data;
+    }
 }
