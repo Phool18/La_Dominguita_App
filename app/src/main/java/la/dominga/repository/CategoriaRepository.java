@@ -7,6 +7,7 @@ import la.dominga.Connector.CategoriaGateway;
 import la.dominga.Connector.Connector;
 import la.dominga.entity.Categoria;
 import la.dominga.entity.RespuestaServidor;
+import la.dominga.entity.dto.TarjetaCreditoDTO;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -65,4 +66,5 @@ public class CategoriaRepository {
         });
         return mld;
     }
+
 }

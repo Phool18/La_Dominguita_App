@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 import java.util.List;
 
 import la.dominga.entity.Categoria;
+import la.dominga.entity.Cliente;
 import la.dominga.entity.RespuestaServidor;
 import la.dominga.repository.CategoriaRepository;
 
@@ -28,4 +29,7 @@ public class CategoriaViewModel extends AndroidViewModel {
     public LiveData<RespuestaServidor<Categoria>> agregarCategoria(Categoria categoria) {
         return repository.agregarCategoria(categoria);
     }
+
+
+
 }

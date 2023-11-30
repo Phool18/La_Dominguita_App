@@ -1,5 +1,6 @@
 package la.dominga.Connector;
 
+import java.util.List;
 import la.dominga.entity.Producto;
 import la.dominga.entity.RespuestaServidor;
 import retrofit2.Call;
@@ -20,4 +21,7 @@ public interface ProductoGateway {
 
     @POST(base + "/guardar")
     Call<RespuestaServidor<Producto>> agregarProducto(@Body Producto producto);
+
+    @GET(base + "/top")
+    Call<RespuestaServidor<List<Producto>>> listarProductosTop();
 }

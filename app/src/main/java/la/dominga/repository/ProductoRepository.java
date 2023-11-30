@@ -3,8 +3,11 @@ package la.dominga.repository;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.List;
+
 import la.dominga.Connector.Connector;
 import la.dominga.Connector.ProductoGateway;
+import la.dominga.entity.Categoria;
 import la.dominga.entity.Producto;
 import la.dominga.entity.RespuestaServidor;
 import retrofit2.Call;
@@ -74,6 +77,24 @@ public class ProductoRepository {
 
             @Override
             public void onFailure(Call<RespuestaServidor<Producto>> call, Throwable t) {
+                mld.setValue(new RespuestaServidor<>());
+                System.out.println("Se ha producido un error: " + t.getMessage());
+                t.printStackTrace();
+            }
+        });
+        return mld;
+    }
+
+    public LiveData<RespuestaServidor<List<Producto>>> listarProductosTop(){
+        final MutableLiveData<RespuestaServidor<List<Producto>>> mld = new MutableLiveData<>();
+        this.api.listarProductosTop().enqueue(new Callback<RespuestaServidor<List<Producto>>>() {
+            @Override
+            public void onResponse(Call<RespuestaServidor<List<Producto>>> call, Response<RespuestaServidor<List<Producto>>> response) {
+                mld.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<RespuestaServidor<List<Producto>>> call, Throwable t) {
                 mld.setValue(new RespuestaServidor<>());
                 System.out.println("Se ha producido un error: " + t.getMessage());
                 t.printStackTrace();

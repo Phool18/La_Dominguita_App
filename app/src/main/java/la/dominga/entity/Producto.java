@@ -16,6 +16,9 @@ public class Producto {
     private Categoria categoria;
 
     private Picture foto;
+
+    private boolean top;
+
     public Producto() {
     }
 
@@ -83,5 +86,13 @@ public class Producto {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public boolean isTop() {
+        return top;
+    }
+
+    public void setTop(boolean top) {
+        this.top = top;
     }
 }

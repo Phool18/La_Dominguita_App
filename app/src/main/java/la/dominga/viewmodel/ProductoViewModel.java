@@ -6,6 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import java.util.List;
+
+import la.dominga.entity.Categoria;
 import la.dominga.entity.Producto;
 import la.dominga.entity.RespuestaServidor;
 import la.dominga.repository.ProductoRepository;
@@ -29,5 +32,9 @@ public class ProductoViewModel extends AndroidViewModel {
 
     public LiveData<RespuestaServidor<Producto>> agregarProducto(Producto producto) {
         return repository.agregarProducto(producto);
+    }
+
+    public LiveData<RespuestaServidor<List<Producto>>> listarProductosTop(){
+        return repository.listarProductosTop();
     }
 }
