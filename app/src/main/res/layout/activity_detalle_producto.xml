@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="#FFECD1">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,45 +12,87 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Botón para volver -->
+        <ImageButton
+            android:id="@+id/btnRetrocederInfoProducto"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?android:selectableItemBackground"
+            android:src="@android:drawable/ic_media_previous"
+            app:tint="#000000"
+            android:contentDescription="@string/regresar" />
+
+        <!-- Imagen del producto -->
         <ImageView
             android:id="@+id/ivProducto"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="350dp"
             android:src="@drawable/image_not_found"
             android:scaleType="centerCrop"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp" />
 
+        <!-- Nombre del producto -->
         <TextView
             android:id="@+id/tvNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pastel de Chocolate"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginTop="6dp" />
 
+        <!-- Contenedor para precio y stock -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvMoneda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="S/."
+                android:textSize="18sp"
+                android:textColor="#FF0000"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvPrecio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="45.00"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvStock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stock: 15 unidades"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <!-- Título de la sección Descripción -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descripción"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp" />
+
+        <!-- Descripción del producto -->
         <TextView
             android:id="@+id/tvDescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Delicioso pastel de chocolate con cobertura de fresa."
             android:textSize="16sp"
-            android:layout_marginTop="8dp" />
-
-        <TextView
-            android:id="@+id/tvPrecio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Precio: S/. 45.00"
-            android:textSize="18sp"
-            android:layout_marginTop="8dp" />
-
-        <TextView
-            android:id="@+id/tvStock"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Stock: 15 unidades"
-            android:textSize="18sp"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="6dp" />
 
         <!-- Aquí puedes añadir más detalles según necesites -->
 

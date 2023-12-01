@@ -53,7 +53,7 @@ public class DetalleProductoActivity extends AppCompatActivity {
             Producto producto = respuesta.getBody();
             tvNombre.setText(producto.getNombre());
             tvDescripcion.setText(producto.getDescripcion());
-            tvPrecio.setText("Precio: S/. " + producto.getPrecio());
+            tvPrecio.setText("" + producto.getPrecio());
             tvStock.setText("Stock: " + producto.getCantidadEnStock() + " unidades");
 
             // Aquí debes cargar la imagen del producto como lo has estado haciendo
