@@ -44,73 +44,70 @@
             android:textStyle="bold"
             android:layout_marginLeft="16dp"/>
 
-        <!-- Precio y controles de cantidad -->
+        <!-- Precio del producto -->
+        <TextView
+            android:id="@+id/tvEtiquetaPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Precio: "
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/imgProducto"
+            android:layout_below="@id/tvNombreProducto"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"/>
 
+        <TextView
+            android:id="@+id/tvPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S/.24"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:layout_toRightOf="@id/tvEtiquetaPrecio"
+            android:layout_alignBaseline="@id/tvEtiquetaPrecio"
+            android:layout_marginLeft="5dp"/>
+
+        <!-- Contenedor para los controles de cantidad -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/imgProducto"
-            android:layout_below="@id/tvNombreProducto"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginTop="18dp"
+            android:layout_toRightOf="@id/imgProducto"
+            android:layout_below="@id/tvPrecio"
+            android:layout_marginTop="8dp"
             android:layout_marginLeft="16dp">
 
-            <TextView
-                android:id="@+id/tvEtiquetaPrecio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Precio: "
-                android:textSize="16sp"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"/>
+            <ImageButton
+                android:id="@+id/btnDecrease"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@android:drawable/ic_menu_revert"
+                android:background="?android:selectableItemBackground"
+                android:contentDescription="@string/disminuir_cantidad"/>
 
-            <TextView
-                android:id="@+id/tvPrecio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="S/.24"
-                android:textSize="16sp"
-                android:textColor="#FFFFFF"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="15dp"/>
+            <EditText
+                android:id="@+id/edtCantidad"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:inputType="number"
+                android:text="1"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:maxLength="3"
+                android:focusable="false"
+                android:cursorVisible="false"/>
 
-            <!-- Contenedor para los controles de cantidad -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="16dp">
 
-                <ImageButton
-                    android:id="@+id/btnDecrease"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@android:drawable/ic_menu_revert"
-                    android:background="?android:selectableItemBackground"
-                    android:contentDescription="@string/disminuir_cantidad"/>
-
-                <EditText
-                    android:id="@+id/edtCantidad"
-                    android:layout_width="30dp"
-                    android:layout_height="40dp"
-                    android:inputType="number"
-                    android:text="1"
-                    android:textSize="12sp"
-                    android:gravity="center"
-                    android:maxLength="3"/>
-
-                <ImageButton
-                    android:id="@+id/btnAdd"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@android:drawable/ic_input_add"
-                    android:background="?android:selectableItemBackground"
-                    android:contentDescription="@string/aumentar_cantidad"/>
-            </LinearLayout>
+            <ImageButton
+                android:id="@+id/btnAdd"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@android:drawable/ic_input_add"
+                android:background="?android:selectableItemBackground"
+                android:contentDescription="@string/aumentar_cantidad"/>
         </LinearLayout>
-
-
     </RelativeLayout>
 </LinearLayout>

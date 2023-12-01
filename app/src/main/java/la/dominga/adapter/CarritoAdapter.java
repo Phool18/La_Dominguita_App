@@ -18,6 +18,7 @@ import java.util.List;
 
 import la.dominga.Connector.Connector;
 import la.dominga.R;
+import la.dominga.activity.Inicio.CarritoActivity;
 import la.dominga.entity.DatosCompra;
 import la.dominga.entity.Producto;
 import la.dominga.utils.Carrito;
@@ -62,7 +63,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
             listaDatosCompras.remove(position);
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, listaDatosCompras.size());
-            // Actualizar el total del carrito en la Activity
+            actualizarCarritoActivity();
         });
 
         holder.btnAdd.setOnClickListener(view -> {
@@ -70,7 +71,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
             if (currentQuantity < producto.getCantidadEnStock()) {
                 holder.edtCantidad.setText(String.valueOf(currentQuantity + 1));
                 datosCompra.setCantidad(currentQuantity + 1);
-                // Actualizar el total del carrito en la Activity
+                actualizarCarritoActivity();
             }
         });
 
@@ -79,7 +80,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
             if (currentQuantity > 1) {
                 holder.edtCantidad.setText(String.valueOf(currentQuantity - 1));
                 datosCompra.setCantidad(currentQuantity - 1);
-                // Actualizar el total del carrito en la Activity
+                actualizarCarritoActivity();
             }
         });
     }
@@ -87,6 +88,12 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
     @Override
     public int getItemCount() {
         return listaDatosCompras.size();
+    }
+
+    private void actualizarCarritoActivity() {
+        if (context instanceof CarritoActivity) {
+            ((CarritoActivity) context).actualizarCarrito();
+        }
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
