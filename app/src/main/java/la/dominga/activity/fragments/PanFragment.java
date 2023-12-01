@@ -1,29 +1,33 @@
 package la.dominga.activity.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-import android.content.Intent;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.Toast;
+
 import la.dominga.R;
+import la.dominga.activity.Inicio.CarritoActivity;
 import la.dominga.adapter.CategoriaAdapter;
 import la.dominga.adapter.OfertaAdapter;
 import la.dominga.adapter.ProductoTopAdapter;
+import la.dominga.entity.Producto;
 import la.dominga.viewmodel.CategoriaViewModel;
 import la.dominga.viewmodel.ProductoViewModel;
-import la.dominga.activity.Inicio.DetalleProductoActivity;
 
 public class PanFragment extends Fragment {
 
     private CategoriaViewModel categoriaViewModel;
     private ProductoViewModel productoViewModel;
+    private CategoriaAdapter categoriaAdapter;
+    private ProductoTopAdapter productoTopAdapter;
     private RecyclerView rcvCategorias, rvMasVendidos;
     private ViewPager viewPagerOfertas;
 
@@ -32,93 +36,95 @@ public class PanFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pan, container, false);
-
-        // Inicializar componentes
-        viewPagerOfertas = view.findViewById(R.id.viewPagerOfertas);
-        rcvCategorias = view.findViewById(R.id.rcvCategorias);
-        rvMasVendidos = view.findViewById(R.id.rvMasVendidos);
-
-        // Configurar ViewPager de ofertas
-        OfertaAdapter ofertaAdapter = new OfertaAdapter(getContext());
-        viewPagerOfertas.setAdapter(ofertaAdapter);
-        configurarBotonesViewPager(view, ofertaAdapter);
-
-        // Configurar ViewModel
-        categoriaViewModel = new ViewModelProvider(this).get(CategoriaViewModel.class);
-        productoViewModel = new ViewModelProvider(this).get(ProductoViewModel.class);
-
-        // Configurar RecyclerViews
-        configurarRecyclerViewCategorias();
-        configurarRecyclerViewMasVendidos();
-
-        // Cargar datos
-        cargarCategorias();
-        cargarProductosMasVendidos();
+        ImageButton btnCarrito = view.findViewById(R.id.btnCarrito); // Asegúrate de que el ID corresponde
+        btnCarrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Crear un Intent para CarritoActivity
+                Intent intent = new Intent(getContext(), CarritoActivity.class);
+                // Iniciar la actividad
+                startActivity(intent);
+            }
+        });
+        initViewModels();
+        setupViewComponents(view);
+        loadCategorias();
+        loadProductosTop();
 
         return view;
     }
 
-    private void configurarBotonesViewPager(View view, OfertaAdapter ofertaAdapter) {
+    private void initViewModels() {
+        categoriaViewModel = new ViewModelProvider(this).get(CategoriaViewModel.class);
+        productoViewModel = new ViewModelProvider(this).get(ProductoViewModel.class);
+    }
+
+    private void setupViewComponents(View view) {
+        setupViewPager(view);
+        setupRecyclerViews(view);
+    }
+
+    private void setupViewPager(View view) {
+        viewPagerOfertas = view.findViewById(R.id.viewPagerOfertas);
+        OfertaAdapter ofertaAdapter = new OfertaAdapter(getContext());
+        viewPagerOfertas.setAdapter(ofertaAdapter);
+
         ImageButton btnIzquierda = view.findViewById(R.id.btnIzquierda);
         ImageButton btnDerecha = view.findViewById(R.id.btnDerecha);
 
-        btnIzquierda.setOnClickListener(v -> navegarViewPager(viewPagerOfertas, ofertaAdapter, true));
-        btnDerecha.setOnClickListener(v -> navegarViewPager(viewPagerOfertas, ofertaAdapter, false));
+        btnIzquierda.setOnClickListener(v -> navigateViewPager(-1, ofertaAdapter.getCount()));
+        btnDerecha.setOnClickListener(v -> navigateViewPager(1, ofertaAdapter.getCount()));
     }
 
-    private void navegarViewPager(ViewPager viewPager, OfertaAdapter ofertaAdapter, boolean irIzquierda) {
-        int currentItem = viewPager.getCurrentItem();
-        if (irIzquierda) {
-            viewPager.setCurrentItem(currentItem > 0 ? currentItem - 1 : ofertaAdapter.getCount() - 1);
+    private void navigateViewPager(int direction, int itemCount) {
+        int currentItem = viewPagerOfertas.getCurrentItem();
+        if (currentItem + direction >= 0 && currentItem + direction < itemCount) {
+            viewPagerOfertas.setCurrentItem(currentItem + direction);
         } else {
-            viewPager.setCurrentItem(currentItem < ofertaAdapter.getCount() - 1 ? currentItem + 1 : 0);
+            viewPagerOfertas.setCurrentItem(direction > 0 ? 0 : itemCount - 1);
         }
     }
 
-    private void configurarRecyclerViewCategorias() {
-        CategoriaAdapter categoriaAdapter = new CategoriaAdapter();
+    private void setupRecyclerViews(View view) {
+        setupCategoriasRecyclerView(view);
+        setupProductosTopRecyclerView(view);
+    }
+
+    private void setupCategoriasRecyclerView(View view) {
+        rcvCategorias = view.findViewById(R.id.rcvCategorias);
+        categoriaAdapter = new CategoriaAdapter();
         rcvCategorias.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         rcvCategorias.setAdapter(categoriaAdapter);
     }
 
-    private void cargarCategorias() {
-        categoriaViewModel.listarCategoriasBD().observe(getViewLifecycleOwner(), respuesta -> {
-            if (respuesta != null && respuesta.getBody() != null) {
-                CategoriaAdapter adapter = (CategoriaAdapter) rcvCategorias.getAdapter();
-                if (adapter != null) {
-                    adapter.setListaCategorias(respuesta.getBody());
-                }
-            } else {
-                Toast.makeText(getContext(), "No se encontraron categorías", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void configurarRecyclerViewMasVendidos() {
-        ProductoTopAdapter adapter = new ProductoTopAdapter(getContext());
+    private void setupProductosTopRecyclerView(View view) {
+        rvMasVendidos = view.findViewById(R.id.rvMasVendidos);
+        productoTopAdapter = new ProductoTopAdapter(getContext());
         rvMasVendidos.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        rvMasVendidos.setAdapter(adapter);
-        adapter.setOnProductoClickListener(this::abrirDetalleProductoActivity);
+        rvMasVendidos.setAdapter(productoTopAdapter);
     }
 
-    private void cargarProductosMasVendidos() {
-        productoViewModel.listarProductosTop().observe(getViewLifecycleOwner(), respuesta -> {
-            if (respuesta != null && respuesta.getBody() != null) {
-                ProductoTopAdapter adapter = (ProductoTopAdapter) rvMasVendidos.getAdapter();
-                if (adapter != null) {
-                    adapter.setProductos(respuesta.getBody());
-                }
+    private void loadCategorias() {
+        categoriaViewModel.listarCategoriasBD().observe(getViewLifecycleOwner(), respuestaServidor -> {
+            if (respuestaServidor != null && respuestaServidor.getBody() != null && !respuestaServidor.getBody().isEmpty()) {
+                categoriaAdapter.setListaCategorias(respuestaServidor.getBody());
             } else {
-                Toast.makeText(getContext(), "Error al cargar productos más vendidos", Toast.LENGTH_SHORT).show();
+                // Manejar error o ausencia de datos
             }
         });
     }
 
-    private void abrirDetalleProductoActivity(int productoId) {
-        Intent intent = new Intent(getContext(), DetalleProductoActivity.class);
-        intent.putExtra("productoId", productoId);
-        startActivity(intent);
+    private void loadProductosTop() {
+        productoViewModel.listarProductosTop().observe(getViewLifecycleOwner(), respuesta -> {
+            if (respuesta != null && respuesta.getRpta() == 1 && respuesta.getBody() != null) {
+                productoTopAdapter.setProductos(respuesta.getBody());
+            } else {
+                // Manejar error o ausencia de datos
+            }
+        });
     }
+
 }

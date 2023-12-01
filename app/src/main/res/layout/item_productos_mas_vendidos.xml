@@ -43,7 +43,7 @@
             android:textSize="14sp"/>
 
         <ImageButton
-            android:id="@+id/btnCarrito"
+            android:id="@+id/btnAgregarCarrito"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="@drawable/bg_carrito"

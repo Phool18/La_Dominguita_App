@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.Inicio.CarritoActivity">
+    <!-- Encabezado con Botón Atrás y Título -->
+    <LinearLayout
+        android:id="@+id/llEncabezado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <ImageButton
+            android:id="@+id/btnRetroceder"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?android:selectableItemBackground"
+            android:src="@android:drawable/ic_media_previous"
+            app:tint="#000000"
+            android:contentDescription="@string/regresar" />
+
+        <TextView
+            android:id="@+id/tvTituloCarrito"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Carrito de Compras"
+            android:layout_marginLeft="16dp"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- RecyclerView para listar los productos -->
+    <RelativeLayout
+        android:id="@+id/rlListaProductos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/llEncabezado"
+        android:layout_above="@+id/llFooter"
+        android:padding="25dp"
+        android:top="30dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCarritoCompras"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+
+    <!-- Footer con detalle de precios -->
+    <LinearLayout
+        android:id="@+id/llFooter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#04151F"
+        android:padding="16dp"
+        android:layout_alignParentBottom="true">
+
+        <!-- Detalles de precios -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvEtiquetaSubtotal"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Sub total"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:gravity="start"/>
+
+            <TextView
+                android:id="@+id/tvSubtotal"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="S/.110.00"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:gravity="end"/>
+        </LinearLayout>
+
+        <!-- Impuestos -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvEtiquetaImpuestos"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Impuestos"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:gravity="start"/>
+
+            <TextView
+                android:id="@+id/tvImpuestos"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="S/.15.50"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:gravity="end"/>
+        </LinearLayout>
+
+        <!-- Envío -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvEtiquetaEnvio"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Envío"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:gravity="start"/>
+
+            <TextView
+                android:id="@+id/tvEnvio"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Free"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:gravity="end"/>
+        </LinearLayout>
+
+        <!-- Línea de separación -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#ED5D52"
+            android:layout_marginVertical="8dp"/>
+
+        <!-- Total -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvEtiquetaTotal"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Total"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:gravity="start"/>
+
+            <TextView
+                android:id="@+id/tvTotal"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="S/.125.50"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:gravity="end"/>
+        </LinearLayout>
+
+        <!-- Botón para Checkout -->
+        <Button
+            android:id="@+id/btnCheckout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:textStyle="bold"
+            style="@style/CustomButtonStyle"
+            android:text="Checkout"/>
+    </LinearLayout>
+</RelativeLayout>
