@@ -1,5 +1,6 @@
 package la.dominga.activity.Inicio;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,12 +35,29 @@ public class CarritoActivity extends AppCompatActivity implements CarritoAdapter
 
         inicializarRecyclerView();
         actualizarUI();
+        btnCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CarritoActivity.this, TarjetaActivity.class);
+
+                // Obtener el monto total del TextView
+                String totalStr = tvTotal.getText().toString();
+                totalStr = totalStr.replace("S/. ", ""); // Remover el símbolo de moneda si está presente
+                double total = Double.parseDouble(totalStr); // Convertir a double
+
+                // Poner el monto total en el Intent
+                intent.putExtra("montoTotal", total);
+                startActivity(intent);
+            }
+        });
 
         ImageButton btnRetroceder = findViewById(R.id.btnRetroceder);
-        btnRetroceder.setOnClickListener(v -> onBackPressed());
-
-        btnCheckout.setOnClickListener(view -> {
-            // Implementar lógica de checkout
+        btnRetroceder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Implementa aquí la navegación de retroceso
+                onBackPressed(); // Esto es típicamente utilizado para cerrar la actividad actual
+            }
         });
     }
 

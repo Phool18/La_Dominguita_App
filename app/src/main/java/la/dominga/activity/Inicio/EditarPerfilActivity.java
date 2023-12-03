@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -42,7 +43,14 @@ public class EditarPerfilActivity extends AppCompatActivity {
         if (usuarioActual != null) {
             rellenarDatosUsuario();
         }
-
+        ImageButton btnRetroceder = findViewById(R.id.btnRetroceder);
+        btnRetroceder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Implementa aquí la navegación de retroceso
+                onBackPressed(); // Esto es típicamente utilizado para cerrar la actividad actual
+            }
+        });
         btnGuardarDatos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

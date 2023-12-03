@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EFD6AC">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Encabezado con Botón Atrás y Título -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <include layout="@layout/boton_retroceso" />
+
+            <TextView
+                android:id="@+id/tvTituloMetodoPago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Método de Pago"
+                android:layout_marginLeft="16dp"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <!-- Formulario para detalles de tarjeta -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+
+            <!-- Número de tarjeta -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputNumeroTarjeta"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="#ffffff"
+                app:boxStrokeColor="#432534"
+                app:hintTextColor="#432534">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtNumeroTarjeta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Número de tarjeta"
+                    android:inputType="number"
+                    android:maxLength="16"
+                    android:textColor="#432534"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Nombre del titular -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputNombreTitular"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="#ffffff"
+                app:boxStrokeColor="#432534"
+                app:hintTextColor="#432534">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtNombreTitular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nombre del titular"
+                    android:inputType="text"
+                    android:textColor="#432534"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Mes y Año -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputFechaVencimiento"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="#ffffff"
+                app:boxStrokeColor="#432534"
+                app:hintTextColor="#432534">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtFechaVencimiento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Mes/Año"
+                    android:maxLength="5"
+                    android:inputType="number"
+                    android:textColor="#432534"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- CVV -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputCvv"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="#ffffff"
+                app:boxStrokeColor="#432534"
+                app:hintTextColor="#432534">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtCvv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CVV"
+                    android:maxLength="3"
+                    android:inputType="number"
+                    android:textColor="#432534"/>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- Botón Validar -->
+        <Button
+            android:id="@+id/btnValidar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:text="Validar"
+            android:textStyle="bold"
+            style="@style/CustomButtonStyle"/>
+
+        <!-- Total y Monto Total -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvMontoTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="S/.125,50"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="10dp"/>
+
+        <!-- Botón Checkout (Inicialmente deshabilitado) -->
+        <Button
+            android:id="@+id/btnCheckout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Checkout"
+            android:textStyle="bold"
+            android:background="@drawable/btn_checkout_selector" />
+    </LinearLayout>
+</ScrollView>

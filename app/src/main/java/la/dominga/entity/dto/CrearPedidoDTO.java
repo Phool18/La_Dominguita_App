@@ -1,6 +1,8 @@
 package la.dominga.entity.dto;
 
 
+import java.util.List;
+
 import la.dominga.entity.CarritoDeCompras;
 import la.dominga.entity.Cliente;
 import la.dominga.entity.DatosCompra;
@@ -8,13 +10,13 @@ import la.dominga.entity.DatosCompra;
 public class CrearPedidoDTO {
     private CarritoDeCompras carritoDeCompras ;
 
-    private Iterable<DatosCompra> informacionDeLaVenta;
+    private List<DatosCompra> informacionDeLaVenta;
     private Cliente cliente;
 
     public CrearPedidoDTO() {
     }
 
-    public CrearPedidoDTO(CarritoDeCompras carritoDeCompras, Iterable<DatosCompra> informacionDeLaVenta, Cliente cliente) {
+    public CrearPedidoDTO(CarritoDeCompras carritoDeCompras, List<DatosCompra> informacionDeLaVenta, Cliente cliente) {
         this.carritoDeCompras = carritoDeCompras;
         this.informacionDeLaVenta = informacionDeLaVenta;
         this.cliente = cliente;
@@ -28,11 +30,11 @@ public class CrearPedidoDTO {
         this.carritoDeCompras = carritoDeCompras;
     }
 
-    public Iterable<DatosCompra> getInformacionDeLaVenta() {
+    public List<DatosCompra> getInformacionDeLaVenta() {
         return informacionDeLaVenta;
     }
 
-    public void setInformacionDeLaVenta(Iterable<DatosCompra> informacionDeLaVenta) {
+    public void setInformacionDeLaVenta(List<DatosCompra> informacionDeLaVenta) {
         this.informacionDeLaVenta = informacionDeLaVenta;
     }
 

@@ -19,6 +19,9 @@ public class Producto {
 
     private boolean top;
 
+    public Producto() {
+    }
+
     public int getId() {
         return id;
     }
