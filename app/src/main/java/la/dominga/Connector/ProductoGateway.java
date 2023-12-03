@@ -17,7 +17,7 @@ public interface ProductoGateway {
     Call<RespuestaServidor> listarProductosPorNombre(@Path("nombre") String nombre);
 
     @GET(base + "/categoria/{idCategoria}")
-    Call<RespuestaServidor> listarProductosPorCategoria(@Path("idCategoria") int idCategoria);
+    Call<RespuestaServidor<List<Producto>>> listarProductosPorCategoria(@Path("idCategoria") int idCategoria);
 
     @POST(base + "/guardar")
     Call<RespuestaServidor<Producto>> agregarProducto(@Body Producto producto);

@@ -2,7 +2,6 @@ package la.dominga.activity.Inicio;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -49,6 +48,14 @@ public class IniciarSesionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_iniciar_sesion);
         this.initViewModel();
         this.init();
+        ImageButton btnRetroceder = findViewById(R.id.btnRetroceder);
+        btnRetroceder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Implementa aquí la navegación de retroceso
+                onBackPressed(); // Esto es típicamente utilizado para cerrar la actividad actual
+            }
+        });
     }
 
     private void initViewModel() {
@@ -57,7 +64,6 @@ public class IniciarSesionActivity extends AppCompatActivity {
     private void init(){
         edtcampoCorreoElectronico = findViewById(R.id.edtcampoCorreoElectronico);
         edtcampoContraseña = findViewById(R.id.edtcampoContraseña);
-        btnLogAtras = findViewById(R.id.btnLogAtras);
 
         textInputCorreoElectronico = findViewById(R.id.textInputCorreoElectronico);
         textInputContrasena = findViewById(R.id.textInputContrasena);
@@ -98,6 +104,7 @@ public class IniciarSesionActivity extends AppCompatActivity {
             startActivity(i);
             overridePendingTransition(R.anim.left_in, R.anim.left_out);
         });
+
         edtcampoCorreoElectronico.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -128,15 +135,6 @@ public class IniciarSesionActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
-            }
-        });
-        btnLogAtras.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Inicia InicioActivity
-                Intent intent = new Intent(IniciarSesionActivity.this, InicioActivity.class);
-                startActivity(intent);
-                finish(); // Finaliza la actividad actual (opcional)
             }
         });
 

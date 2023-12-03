@@ -19,19 +19,6 @@ public class Producto {
 
     private boolean top;
 
-    public Producto() {
-    }
-
-    public Producto(int id, String nombre, String descripcion, double precio, int cantidadEnStock, Categoria categoria, Picture foto) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.cantidadEnStock = cantidadEnStock;
-        this.categoria = categoria;
-        this.foto = foto;
-    }
-
     public int getId() {
         return id;
     }

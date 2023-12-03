@@ -1,7 +1,9 @@
 package la.dominga.activity.Inicio;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,9 +14,7 @@ import la.dominga.adapter.CarritoAdapter;
 import la.dominga.entity.DatosCompra;
 import la.dominga.utils.Carrito;
 
-import java.util.List;
-
-public class CarritoActivity extends AppCompatActivity {
+public class CarritoActivity extends AppCompatActivity implements CarritoAdapter.ICarritoAdapterListener {
 
     private RecyclerView rvCarritoCompras;
     private CarritoAdapter carritoAdapter;
@@ -35,24 +35,26 @@ public class CarritoActivity extends AppCompatActivity {
         inicializarRecyclerView();
         actualizarUI();
 
+        ImageButton btnRetroceder = findViewById(R.id.btnRetroceder);
+        btnRetroceder.setOnClickListener(v -> onBackPressed());
+
         btnCheckout.setOnClickListener(view -> {
             // Implementar lógica de checkout
         });
     }
 
     private void inicializarRecyclerView() {
-        List<DatosCompra> listaDatosCompras = Carrito.getDatosCompras();
-        carritoAdapter = new CarritoAdapter(this, listaDatosCompras);
+        carritoAdapter = new CarritoAdapter(this, Carrito.obtenerProductos(), this);
         rvCarritoCompras.setLayoutManager(new LinearLayoutManager(this));
         rvCarritoCompras.setAdapter(carritoAdapter);
     }
 
     private void actualizarUI() {
         double subtotal = 0;
-        for (DatosCompra datosCompra : Carrito.getDatosCompras()) {
+        for (DatosCompra datosCompra : Carrito.obtenerProductos()) {
             subtotal += datosCompra.getProducto().getPrecio() * datosCompra.getCantidad();
         }
-        double impuestos = subtotal * 0.15; // 15% de impuestos
+        double impuestos = subtotal * 0.18; // 18% de impuestos
         double total = subtotal + impuestos;
 
         tvSubtotal.setText("S/. " + String.format("%.2f", subtotal));
@@ -61,8 +63,8 @@ public class CarritoActivity extends AppCompatActivity {
     }
 
     // Llamado cada vez que un producto es agregado, eliminado o su cantidad es modificada
-    public void actualizarCarrito() {
-        carritoAdapter.notifyDataSetChanged();
+    @Override
+    public void onCarritoUpdated() {
         actualizarUI();
     }
 }

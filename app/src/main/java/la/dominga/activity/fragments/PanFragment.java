@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 
 import la.dominga.R;
 import la.dominga.activity.Inicio.CarritoActivity;
+import la.dominga.activity.Inicio.ListaProductosActivity;
 import la.dominga.adapter.CategoriaAdapter;
 import la.dominga.adapter.OfertaAdapter;
 import la.dominga.adapter.ProductoTopAdapter;
@@ -96,6 +97,14 @@ public class PanFragment extends Fragment {
     private void setupCategoriasRecyclerView(View view) {
         rcvCategorias = view.findViewById(R.id.rcvCategorias);
         categoriaAdapter = new CategoriaAdapter();
+        categoriaAdapter.setOnCategoriaClickListener(new CategoriaAdapter.OnCategoriaClickListener() {
+            @Override
+            public void onCategoriaClick(int categoriaId) {
+                Intent intent = new Intent(getContext(), ListaProductosActivity.class);
+                intent.putExtra("categoriaId", categoriaId);
+                startActivity(intent);
+            }
+        });
         rcvCategorias.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         rcvCategorias.setAdapter(categoriaAdapter);
     }
@@ -112,7 +121,7 @@ public class PanFragment extends Fragment {
             if (respuestaServidor != null && respuestaServidor.getBody() != null && !respuestaServidor.getBody().isEmpty()) {
                 categoriaAdapter.setListaCategorias(respuestaServidor.getBody());
             } else {
-                // Manejar error o ausencia de datos
+
             }
         });
     }
@@ -122,7 +131,7 @@ public class PanFragment extends Fragment {
             if (respuesta != null && respuesta.getRpta() == 1 && respuesta.getBody() != null) {
                 productoTopAdapter.setProductos(respuesta.getBody());
             } else {
-                // Manejar error o ausencia de datos
+
             }
         });
     }

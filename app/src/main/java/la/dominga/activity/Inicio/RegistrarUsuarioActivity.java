@@ -62,6 +62,15 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registrar_usuario);
         this.init();
         this.initViewModel();
+
+        ImageButton btnRetroceder = findViewById(R.id.btnRetroceder);
+        btnRetroceder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Implementa aquí la navegación de retroceso
+                onBackPressed(); // Esto es típicamente utilizado para cerrar la actividad actual
+            }
+        });
     }
 
     private void initViewModel() {
@@ -101,7 +110,6 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
         //BOTONES
         botonCrearCuenta = findViewById(R.id.botonCrearCuenta);
         btnSubirImagen = findViewById(R.id.btnSubirImagen);
-        btnRegistroAtras = findViewById(R.id.btnRegistroAtras);
         //DATOS USUARIO
 
         fotoPerfil = findViewById(R.id.fotoPerfil);
@@ -190,15 +198,6 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-            }
-        });
-        btnRegistroAtras.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Inicia InicioActivity
-                Intent intent = new Intent(RegistrarUsuarioActivity.this, InicioActivity.class);
-                startActivity(intent);
-                finish(); // Finaliza la actividad actual (opcional)
             }
         });
     }

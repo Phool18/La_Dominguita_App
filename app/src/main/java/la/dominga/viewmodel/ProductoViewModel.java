@@ -26,7 +26,7 @@ public class ProductoViewModel extends AndroidViewModel {
         return repository.listarProductosPorNombre(nombre);
     }
 
-    public LiveData<RespuestaServidor> listarProductosPorCategoria(int idCategoria) {
+    public LiveData<RespuestaServidor<List<Producto>>> listarProductosPorCategoria(int idCategoria) {
         return repository.listarProductosPorCategoria(idCategoria);
     }
 

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#FFECD1">
+    android:background="#EFD6AC">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,14 +12,7 @@
         android:padding="16dp">
 
         <!-- Botón para volver -->
-        <ImageButton
-            android:id="@+id/btnRetrocederInfoProducto"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?android:selectableItemBackground"
-            android:src="@android:drawable/ic_media_previous"
-            app:tint="#000000"
-            android:contentDescription="@string/regresar" />
+        <include layout="@layout/boton_retroceso" />
 
         <!-- Imagen del producto -->
         <ImageView
@@ -29,9 +21,7 @@
             android:layout_height="350dp"
             android:src="@drawable/image_not_found"
             android:scaleType="centerCrop"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp" />
+            android:layout_marginBottom="16dp" />
 
         <!-- Nombre del producto -->
         <TextView
@@ -93,6 +83,17 @@
             android:text="Delicioso pastel de chocolate con cobertura de fresa."
             android:textSize="16sp"
             android:layout_marginTop="6dp" />
+
+        <!-- Botón Agregar al Carrito -->
+        <Button
+            android:id="@+id/btnAgregarAlCarrito"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:text="Agregar al Carrito"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="#A63D40"
+            android:textColor="#000000"
+            android:layout_marginTop="16dp" />
 
         <!-- Aquí puedes añadir más detalles según necesites -->
 

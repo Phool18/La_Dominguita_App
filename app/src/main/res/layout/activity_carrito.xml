@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.Inicio.CarritoActivity">
+    tools:context=".activity.Inicio.CarritoActivity"
+    android:background="#EFD6AC">
     <!-- Encabezado con Botón Atrás y Título -->
     <LinearLayout
         android:id="@+id/llEncabezado"
@@ -14,14 +15,7 @@
         android:gravity="center_vertical"
         android:padding="16dp">
 
-        <ImageButton
-            android:id="@+id/btnRetroceder"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?android:selectableItemBackground"
-            android:src="@android:drawable/ic_media_previous"
-            app:tint="#000000"
-            android:contentDescription="@string/regresar" />
+        <include layout="@layout/boton_retroceso" />
 
         <TextView
             android:id="@+id/tvTituloCarrito"

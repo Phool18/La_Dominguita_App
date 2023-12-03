@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:fillViewport="true">
-
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/fondoPrincipal">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Cabecera con saludo y botones -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -17,38 +18,27 @@
             android:gravity="center_vertical"
             android:paddingTop="31dp">
 
+            <!-- Texto de bienvenida -->
             <TextView
                 android:id="@+id/tvBuenosDias"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Buenos días!"
                 android:textSize="36sp"
                 android:textStyle="bold"
                 android:textColor="#432534"
-                android:layout_marginEnd="26dp"/>
-
-            <ImageButton
-                android:id="@+id/btnCarrito"
-                android:layout_width="64dp"
-                android:layout_height="48dp"
-                android:background="@drawable/bg_carrito"
-                android:contentDescription="@string/carrito"
-                android:layout_marginEnd="16dp"/>
-
-            <ImageButton
-                android:id="@+id/btnHistorial"
-                android:layout_width="64dp"
-                android:layout_height="48dp"
-                android:background="@drawable/bg_historial"
-                android:contentDescription="@string/historial" />
+                android:gravity="start"/>
         </LinearLayout>
 
+        <!-- Barra de búsqueda -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/bg_rectangulo">
 
+            <!-- Campo de búsqueda -->
             <EditText
                 android:id="@+id/etBuscar"
                 android:layout_width="match_parent"
@@ -60,6 +50,7 @@
                 android:background="@android:color/transparent"
                 android:textColor="#FFFFFF" />
 
+            <!-- Botón de búsqueda -->
             <ImageButton
                 android:id="@+id/btnBuscar"
                 android:layout_width="48dp"
@@ -73,7 +64,9 @@
                 android:padding="9dp"/>
         </FrameLayout>
 
+        <!-- Título de la sección Categorías -->
         <TextView
+            android:id="@+id/tvCategorias"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Categorías"
@@ -82,110 +75,120 @@
             android:textColor="#000000"
             android:layout_marginTop="20dp"/>
 
-        <LinearLayout
-            android:layout_width="390dp"
-            android:layout_height="387dp"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+        <!-- Contenedor de las categorías -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:alignmentMode="alignMargins"
+            android:columnOrderPreserved="false"
+            android:padding="8dp">
 
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="378dp"
-                android:alignmentMode="alignMargins"
-                android:columnCount="2"
-                android:columnOrderPreserved="false"
-                android:padding="8dp"
-                android:rowCount="2">
+            <!-- Categoría 1 -->
+            <FrameLayout
+                android:id="@+id/flCategoria1"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp">
 
-                <!-- Primer elemento de la cuadrícula -->
-                <FrameLayout
+                <ImageView
+                    android:id="@+id/ivCategoria1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/categoria1"
+                    android:scaleType="centerCrop" />
+
+                <TextView
+                    android:id="@+id/tvCategoria1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp">
+                    android:layout_gravity="center"
+                    android:text="Postres"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000" />
+            </FrameLayout>
 
-                    <ImageView
-                        android:layout_width="180dp"
-                        android:layout_height="180dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/categoria1" />
+            <!-- Categoría 2 -->
+            <FrameLayout
+                android:id="@+id/flCategoria2"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Postres"
-                        android:textColor="#432534"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
-                </FrameLayout>
+                <ImageView
+                    android:id="@+id/ivCategoria2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/categoria2"
+                    android:scaleType="centerCrop" />
 
-                <FrameLayout
+                <TextView
+                    android:id="@+id/tvCategoria2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp">
+                    android:layout_gravity="center"
+                    android:text="Sándwiches"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000" />
+            </FrameLayout>
 
-                    <ImageView
-                        android:layout_width="180dp"
-                        android:layout_height="180dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/categoria2" />
+            <!-- Categoría 3 -->
+            <FrameLayout
+                android:id="@+id/flCategoria3"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Sanguches"
-                        android:textColor="#432534"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
-                </FrameLayout>
+                <ImageView
+                    android:id="@+id/ivCategoria3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/categoria3"
+                    android:scaleType="centerCrop" />
 
-                <FrameLayout
+                <TextView
+                    android:id="@+id/tvCategoria3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp">
+                    android:layout_gravity="center"
+                    android:text="Tortas"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000" />
+            </FrameLayout>
 
-                    <ImageView
-                        android:layout_width="180dp"
-                        android:layout_height="180dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/categoria3" />
+            <!-- Categoría 4 -->
+            <FrameLayout
+                android:id="@+id/flCategoria4"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Tortas"
-                        android:textColor="#432534"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
-                </FrameLayout>
+                <ImageView
+                    android:id="@+id/ivCategoria4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/categoria4"
+                    android:scaleType="centerCrop" />
 
-                <FrameLayout
+                <TextView
+                    android:id="@+id/tvCategoria4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp">
-
-                    <ImageView
-                        android:layout_width="180dp"
-                        android:layout_height="180dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/categoria4" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Empanadas"
-                        android:textColor="#432534"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
-                </FrameLayout>
-
-
-            </GridLayout>
-        </LinearLayout>
-
+                    android:layout_gravity="center"
+                    android:text="Empanadas"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000" />
+            </FrameLayout>
+        </GridLayout>
 
     </LinearLayout>
 </ScrollView>

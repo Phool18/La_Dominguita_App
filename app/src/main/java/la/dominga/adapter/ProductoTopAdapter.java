@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,22 +70,15 @@ public class ProductoTopAdapter extends RecyclerView.Adapter<ProductoTopAdapter.
             intent.putExtra("productoId", producto.getId());
             view.getContext().startActivity(intent);
         });
-
-        // Click listener para agregar al carrito
         holder.btnAgregarCarrito.setOnClickListener(view -> {
-            if (context != null) {
-                DatosCompra datosCompra = new DatosCompra();
-                datosCompra.setProducto(producto);
-                datosCompra.setCantidad(1); // Cantidad predeterminada
-                String mensaje = Carrito.agregarProductos(datosCompra);
-                Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+            // Agregar el producto actual al carrito con una cantidad predeterminada (por ejemplo, 1)
+            String mensaje = Carrito.agregarProducto(producto, 1);
 
-                if (context instanceof CarritoActivity) {
-                    ((CarritoActivity) context).actualizarCarrito();
-                }
-            }
+            // Mostrar un mensaje (Toast) para confirmar la acción
+            Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+
+            // Si necesitas realizar alguna acción adicional, como actualizar un icono de carrito, puedes hacerlo aquí
         });
-
     }
 
     @Override
@@ -94,8 +88,8 @@ public class ProductoTopAdapter extends RecyclerView.Adapter<ProductoTopAdapter.
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvNombreProducto, tvPrecioProducto;
-        ImageView ivProducto, btnAgregarCarrito;
-
+        ImageView ivProducto;
+        ImageView btnAgregarCarrito; // Si es un ImageView
         ViewHolder(View itemView) {
             super(itemView);
             tvNombreProducto = itemView.findViewById(R.id.tvNombreProducto);

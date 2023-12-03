@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +16,22 @@ import la.dominga.entity.Categoria;
 public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.CategoriaViewHolder> {
 
     private List<Categoria> listaCategorias;
+    private OnCategoriaClickListener listener;
 
-    // Constructor
+    // Define la interfaz para el clic en una categoría
+    public interface OnCategoriaClickListener {
+        void onCategoriaClick(int categoriaId);
+    }
     public CategoriaAdapter() {
         this.listaCategorias = new ArrayList<>();
+    }
+    public void setOnCategoriaClickListener(OnCategoriaClickListener listener) {
+        this.listener = listener;
+    }
+    // Constructor modificado para incluir el listener
+    public CategoriaAdapter(OnCategoriaClickListener listener) {
+        this.listaCategorias = new ArrayList<>();
+        this.listener = listener;
     }
 
     // Método para actualizar la lista de categorías
@@ -34,10 +47,20 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
         return new CategoriaViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull CategoriaViewHolder holder, int position) {
         Categoria categoria = listaCategorias.get(position);
-        holder.bind(categoria);
+        holder.bind(categoria, listener);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(listener != null) {
+                    listener.onCategoriaClick(categoria.getId());
+                }
+            }
+        });
     }
 
     @Override
@@ -46,7 +69,6 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
     }
 
     static class CategoriaViewHolder extends RecyclerView.ViewHolder {
-
         TextView tvNombreCategoria;
 
         CategoriaViewHolder(View itemView) {
@@ -54,9 +76,17 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
             tvNombreCategoria = itemView.findViewById(R.id.tvNombreCategoria);
         }
 
-        void bind(Categoria categoria) {
+        void bind(final Categoria categoria, final OnCategoriaClickListener listener) {
             tvNombreCategoria.setText(categoria.getNombre());
-            // Aquí puedes establecer más propiedades si tu categoría tiene más información a mostrar
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null && categoria != null) {
+                        listener.onCategoriaClick(categoria.getId()); // Usar getId() de la categoría
+                    }
+                }
+            });
         }
     }
 }

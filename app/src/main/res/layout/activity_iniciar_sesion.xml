@@ -25,16 +25,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/logo" />
-            <ImageButton
-                android:id="@+id/btnLogAtras"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="1dp"
-                android:background="?android:selectableItemBackground"
-                android:src="@android:drawable/ic_media_previous"
-                app:tint="#000000"
-                android:contentDescription="@string/regresar" />
+            <include layout="@layout/boton_retroceso" />
 
             <TextView
                 android:id="@+id/textoBienvenida"

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFECD1">
+    android:background="#EFD6AC">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,14 +18,7 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <ImageButton
-                android:id="@+id/btnRetrocederMetodoPago"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="?android:selectableItemBackground"
-                android:src="@android:drawable/ic_media_previous"
-                app:tint="#000000"
-                android:contentDescription="@string/regresar" />
+            <include layout="@layout/boton_retroceso" />
 
             <TextView
                 android:id="@+id/tvTituloMetodoPago"

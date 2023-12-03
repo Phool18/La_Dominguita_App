@@ -10,14 +10,6 @@ public class Categoria {
 
     private Picture foto;
 
-    public Categoria() {
-    }
-
-    public Categoria(int id, String nombre, Picture foto) {
-        this.id = id;
-        this.nombre = nombre;
-        this.foto = foto;
-    }
 
     public int getId() {
         return id;

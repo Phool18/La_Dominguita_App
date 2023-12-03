@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="#54BABABA">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +37,7 @@
             android:orientation="horizontal">
 
             <FrameLayout
-                android:id="@+id/flFotoPerfil"
+                android:id="@+id/ivUserPhoto"
                 android:layout_width="0dp"
                 android:layout_height="497dp"
                 android:layout_marginRight="8dp"
@@ -45,47 +46,52 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imgFotoPerfil"
-                    android:layout_width="match_parent"
-                    android:layout_height="243dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
                     android:layout_gravity="top|center_horizontal"
-                    android:src="@drawable/faraon" />
+                    android:src="@drawable/admine" />
 
                 <LinearLayout
                     android:id="@+id/llInformacionUsuario"
                     android:layout_width="match_parent"
-                    android:layout_height="335dp"
+                    android:layout_height="270dp"
                     android:layout_gravity="bottom"
-                    android:gravity="center"
+                    android:paddingTop="50dp"
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvUserName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dp"
                         android:gravity="center"
-                        android:text="Jean Phool Jara Ulloa"
+                        android:text="Admin"
                         android:textColor="#000000"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvUserEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="15dp"
                         android:gravity="center"
-                        android:text="Jean@example.com"
+                        android:text="Admin@hotmail.com"
                         android:textColor="#000000"
-                        android:textSize="20dp"
+                        android:textSize="17sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvUserPhone"
                         android:layout_width="match_parent"
-                        android:layout_height="35dp"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="987654321"
+                        android:text="90000000"
                         android:textColor="#000000"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
+
                 </LinearLayout>
             </FrameLayout>
 

@@ -53,17 +53,10 @@
                     android:text="Subir Imagen"
                     android:textSize="12sp" />
             </LinearLayout>
-
-            <ImageButton
-                android:id="@+id/btnRegistroAtras"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="310dp"
-                android:background="?android:selectableItemBackground"
-                android:src="@android:drawable/ic_media_previous"
-                app:tint="#000000"
-                android:contentDescription="@string/regresar" />
+            <include layout="@layout/boton_retroceso"
+                android:layout_marginTop="100dp"
+                android:layout_width="30dp"
+                android:layout_height="match_parent" />
 
             <TextView
                 android:id="@+id/textoBienvenida"

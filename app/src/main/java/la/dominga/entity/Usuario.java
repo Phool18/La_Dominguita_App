@@ -1,6 +1,8 @@
 package la.dominga.entity;
 
 
+import com.google.gson.Gson;
+
 public class Usuario {
 
     private int id;
@@ -40,5 +42,10 @@ public class Usuario {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public static Usuario fromJson(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, Usuario.class);
     }
 }

@@ -27,11 +27,13 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
 
     private List<DatosCompra> listaDatosCompras;
     private Context context;
+    private ICarritoAdapterListener listener;
 
     // Constructor
-    public CarritoAdapter(Context context, List<DatosCompra> listaDatosCompras) {
+    public CarritoAdapter(Context context, List<DatosCompra> listaDatosCompras, ICarritoAdapterListener listener) {
         this.context = context;
         this.listaDatosCompras = listaDatosCompras;
+        this.listener = listener;
     }
 
     @NonNull
@@ -59,11 +61,10 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
                 .into(holder.imgProducto);
 
         holder.btnEliminarProducto.setOnClickListener(view -> {
-            Carrito.eliminar(producto.getId());
-            listaDatosCompras.remove(position);
-            notifyItemRemoved(position);
-            notifyItemRangeChanged(position, listaDatosCompras.size());
-            actualizarCarritoActivity();
+            Carrito.eliminarProducto(producto.getId());
+            listaDatosCompras.removeIf(dc -> dc.getProducto().getId() == producto.getId());
+            notifyDataSetChanged();
+            listener.onCarritoUpdated();
         });
 
         holder.btnAdd.setOnClickListener(view -> {
@@ -71,7 +72,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
             if (currentQuantity < producto.getCantidadEnStock()) {
                 holder.edtCantidad.setText(String.valueOf(currentQuantity + 1));
                 datosCompra.setCantidad(currentQuantity + 1);
-                actualizarCarritoActivity();
+                listener.onCarritoUpdated();
             }
         });
 
@@ -80,7 +81,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
             if (currentQuantity > 1) {
                 holder.edtCantidad.setText(String.valueOf(currentQuantity - 1));
                 datosCompra.setCantidad(currentQuantity - 1);
-                actualizarCarritoActivity();
+                listener.onCarritoUpdated();
             }
         });
     }
@@ -88,12 +89,6 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
     @Override
     public int getItemCount() {
         return listaDatosCompras.size();
-    }
-
-    private void actualizarCarritoActivity() {
-        if (context instanceof CarritoActivity) {
-            ((CarritoActivity) context).actualizarCarrito();
-        }
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -112,5 +107,10 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
             btnAdd = itemView.findViewById(R.id.btnAdd);
             btnDecrease = itemView.findViewById(R.id.btnDecrease);
         }
+    }
+
+    // Interfaz de escucha para comunicar eventos de actualización al activity
+    public interface ICarritoAdapterListener {
+        void onCarritoUpdated();
     }
 }

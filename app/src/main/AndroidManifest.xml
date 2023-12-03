@@ -20,6 +20,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activity.Inicio.ListaProductosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.Inicio.CategoriaProductoActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.Inicio.CarritoActivity"
             android:exported="false" />
         <activity

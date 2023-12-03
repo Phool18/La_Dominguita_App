@@ -1,0 +1,10 @@
+<ImageButton
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/btnRetroceder"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:background="?android:selectableItemBackground"
+    android:src="@android:drawable/ic_media_previous"
+    app:tint="#000000"
+    android:contentDescription="@string/regresar" />

@@ -17,6 +17,7 @@
     <string name="eliminar_producto">Eliminar producto</string>
     <string name="disminuir_cantidad">Disminuir cantidad</string>
     <string name="aumentar_cantidad">Aumentar cantidad</string>
+    <string name="product_image_description">Descripcion</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

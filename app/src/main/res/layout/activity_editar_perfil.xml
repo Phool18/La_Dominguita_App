@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="#EFD6AC">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,14 +20,7 @@
             android:gravity="center_vertical"
             android:layout_marginBottom="20dp">
 
-            <ImageButton
-                android:id="@+id/btnLogAtras"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:background="?android:selectableItemBackground"
-                android:src="@android:drawable/ic_media_previous"
-                app:tint="#000000"
-                android:contentDescription="@string/regresar" />
+            <include layout="@layout/boton_retroceso" />
 
             <TextView
                 android:layout_width="wrap_content"

@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="button_text_color">#FFFFFF</color>
     <color name="moradito">#432534</color>
+    <color name="fondoPrincipal">#EFD6AC</color>
 </resources>

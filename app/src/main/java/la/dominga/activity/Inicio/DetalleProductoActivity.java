@@ -3,6 +3,9 @@ package la.dominga.activity.Inicio;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,6 +15,8 @@ import la.dominga.Connector.Connector;
 import la.dominga.R;
 import la.dominga.entity.Producto;
 import la.dominga.entity.RespuestaServidor;
+import la.dominga.utils.Carrito;
+import la.dominga.entity.DatosCompra;
 import la.dominga.viewmodel.ProductoViewModel;
 
 public class DetalleProductoActivity extends AppCompatActivity {
@@ -19,7 +24,9 @@ public class DetalleProductoActivity extends AppCompatActivity {
     private ProductoViewModel productoViewModel;
     private ImageView ivProducto;
     private TextView tvNombre, tvDescripcion, tvPrecio, tvStock;
+    private Button btnAgregarAlCarrito;
     private int productoId;
+    private Producto productoActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +41,14 @@ public class DetalleProductoActivity extends AppCompatActivity {
         if (productoId != -1) {
             productoViewModel.obtenerProductoPorId(productoId).observe(this, this::actualizarUI);
         }
+        ImageButton btnRetroceder = findViewById(R.id.btnRetroceder);
+        btnRetroceder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Implementa aquí la navegación de retroceso
+                onBackPressed(); // Esto es típicamente utilizado para cerrar la actividad actual
+            }
+        });
     }
 
     private void initUI() {
@@ -42,6 +57,17 @@ public class DetalleProductoActivity extends AppCompatActivity {
         tvDescripcion = findViewById(R.id.tvDescripcion);
         tvPrecio = findViewById(R.id.tvPrecio);
         tvStock = findViewById(R.id.tvStock);
+        btnAgregarAlCarrito = findViewById(R.id.btnAgregarAlCarrito);
+        btnAgregarAlCarrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (productoActual != null) {
+                    int cantidad = 1;
+                    String mensaje = Carrito.agregarProducto(productoActual, cantidad);
+                    Toast.makeText(DetalleProductoActivity.this, mensaje, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void initViewModel() {
@@ -50,14 +76,14 @@ public class DetalleProductoActivity extends AppCompatActivity {
 
     private void actualizarUI(RespuestaServidor<Producto> respuesta) {
         if (respuesta != null && respuesta.getRpta() == 1 && respuesta.getBody() != null) {
-            Producto producto = respuesta.getBody();
-            tvNombre.setText(producto.getNombre());
-            tvDescripcion.setText(producto.getDescripcion());
-            tvPrecio.setText("" + producto.getPrecio());
-            tvStock.setText("Stock: " + producto.getCantidadEnStock() + " unidades");
+            productoActual = respuesta.getBody();
 
-            // Aquí debes cargar la imagen del producto como lo has estado haciendo
-            String url = Connector.baseUrlE + "/foto/download/" + producto.getFoto().getNombreArchivo();
+            tvNombre.setText(productoActual.getNombre());
+            tvDescripcion.setText(productoActual.getDescripcion());
+            tvPrecio.setText("" + productoActual.getPrecio());
+            tvStock.setText("Stock: " + productoActual.getCantidadEnStock() + " unidades");
+
+            String url = Connector.baseUrlE + "/foto/download/" + productoActual.getFoto().getNombreArchivo();
             Picasso picasso = new Picasso.Builder(this)
                     .downloader(new OkHttp3Downloader(Connector.getClient()))
                     .build();
@@ -65,8 +91,9 @@ public class DetalleProductoActivity extends AppCompatActivity {
                     .error(R.drawable.image_not_found)
                     .into(ivProducto);
         } else {
-            // Manejar el caso en que no se obtengan datos o haya un error
             Toast.makeText(this, "Error al obtener detalles del producto", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 }
