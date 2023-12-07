@@ -40,8 +40,6 @@ public class TarjetaActivity extends AppCompatActivity {
     private TextView tvMontoTotal;
     private TarjetaViewModel tarjetaViewModel;
     private CarritoDeComprasViewModel carritoDeComprasViewModel;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +63,6 @@ public class TarjetaActivity extends AppCompatActivity {
         edtFechaVencimiento.addTextChangedListener(new FechaVencimientoTextWatcher(edtFechaVencimiento));
         btnCheckout.setEnabled(false);
     }
-
 
     private void validarTarjeta() {
         String numeroTarjeta = edtNumeroTarjeta.getText().toString();
@@ -130,7 +127,6 @@ public class TarjetaActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private Cliente obtenerClienteActual() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);

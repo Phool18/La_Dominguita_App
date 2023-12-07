@@ -18,6 +18,7 @@ import com.squareup.picasso.Picasso;
 import la.dominga.Connector.Connector;
 import la.dominga.R;
 import la.dominga.activity.Inicio.EditarPerfilActivity;
+import la.dominga.activity.Inicio.HistorialDeComprasActivity;
 import la.dominga.entity.Cliente;
 import la.dominga.entity.Usuario;
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -41,12 +42,16 @@ public class UserFragment extends Fragment {
         imgFotoPerfil = view.findViewById(R.id.imgFotoPerfil);
         btnCerrarSesion = view.findViewById(R.id.btnCerrarSesion);
         btnEditarPerfil = view.findViewById(R.id.btnEditarPerfil);
-
         cargarDatosUsuario();
-
         btnCerrarSesion.setOnClickListener(v -> mostrarDialogoSalida());
         btnEditarPerfil.setOnClickListener(v -> abrirEditarPerfilActivity());
-
+        Button btnHistorial = view.findViewById(R.id.btnHistorial);
+        btnHistorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirHistorialDeCompras();
+            }
+        });
         return view;
     }
 
@@ -101,7 +106,10 @@ public class UserFragment extends Fragment {
                 })
                 .show();
     }
-
+    private void abrirHistorialDeCompras() {
+        Intent intent = new Intent(getActivity(), HistorialDeComprasActivity.class);
+        startActivity(intent);
+    }
     private void borrarPreferenciasInicioSesion() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         SharedPreferences.Editor editor = preferences.edit();

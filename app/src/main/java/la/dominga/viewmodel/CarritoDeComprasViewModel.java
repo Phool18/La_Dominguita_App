@@ -8,10 +8,12 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
+import la.dominga.entity.DatosCompra;
 import la.dominga.entity.dto.CrearPedidoDTO;
 import la.dominga.entity.dto.ImprimirPedidosDTO;
 import la.dominga.entity.RespuestaServidor;
 import la.dominga.repository.CarritoDeComprasRepository;
+import okhttp3.ResponseBody;
 
 public class CarritoDeComprasViewModel extends AndroidViewModel {
 
@@ -29,4 +31,14 @@ public class CarritoDeComprasViewModel extends AndroidViewModel {
     public LiveData<RespuestaServidor> generarPedidoAlCliente(CrearPedidoDTO crearPedidoDTO){
         return repository.generarPedidoAlCliente(crearPedidoDTO);
     }
+
+    public LiveData<RespuestaServidor<List<DatosCompra>>> obtenerDetallesCarrito(int idCarrito) {
+        return repository.obtenerDetallesCarrito(idCarrito);
+    }
+
+    public LiveData<ResponseBody> descargarBoleta(int idCompra) {
+        return repository.descargarBoleta(idCompra);
+    }
+
+
 }

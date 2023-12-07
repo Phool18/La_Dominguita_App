@@ -80,19 +80,33 @@ public class DetalleProductoActivity extends AppCompatActivity {
 
             tvNombre.setText(productoActual.getNombre());
             tvDescripcion.setText(productoActual.getDescripcion());
-            tvPrecio.setText("" + productoActual.getPrecio());
-            tvStock.setText("Stock: " + productoActual.getCantidadEnStock() + " unidades");
+            tvPrecio.setText("S/. " + productoActual.getPrecio());
 
-            String url = Connector.baseUrlE + "/foto/download/" + productoActual.getFoto().getNombreArchivo();
-            Picasso picasso = new Picasso.Builder(this)
-                    .downloader(new OkHttp3Downloader(Connector.getClient()))
-                    .build();
-            picasso.load(url)
-                    .error(R.drawable.image_not_found)
-                    .into(ivProducto);
+            // Verifica si hay stock y actualiza la interfaz de usuario
+            if (productoActual.getCantidadEnStock() > 0) {
+                tvStock.setText("Stock: " + productoActual.getCantidadEnStock() + " unidades");
+                tvStock.setTextColor(getResources().getColor(android.R.color.black));
+                btnAgregarAlCarrito.setEnabled(true);
+            } else {
+                tvStock.setText("Sin Stock");
+                tvStock.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+                btnAgregarAlCarrito.setEnabled(false);
+            }
+
+            cargarImagenProducto(productoActual.getFoto().getNombreArchivo());
         } else {
             Toast.makeText(this, "Error al obtener detalles del producto", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void cargarImagenProducto(String nombreArchivo) {
+        String url = Connector.baseUrlE + "/foto/download/" + nombreArchivo;
+        Picasso picasso = new Picasso.Builder(this)
+                .downloader(new OkHttp3Downloader(Connector.getClient()))
+                .build();
+        picasso.load(url)
+                .error(R.drawable.image_not_found)
+                .into(ivProducto);
     }
 
 

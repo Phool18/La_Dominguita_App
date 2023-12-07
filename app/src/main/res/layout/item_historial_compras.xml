@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="#432534"
+    android:elevation="4dp"
+    android:layout_margin="8dp">
+
+    <ImageView
+        android:id="@+id/imgLogoBolsa"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_bolsa_compras" />
+
+    <TextView
+        android:id="@+id/tvFechaCompra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha de Compra: "
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:layout_toEndOf="@id/imgLogoBolsa"/>
+
+    <TextView
+        android:id="@+id/tvFechaCompraValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="01/01/2023"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:layout_toEndOf="@id/tvFechaCompra"
+        android:layout_alignBaseline="@id/tvFechaCompra"/>
+
+    <TextView
+        android:id="@+id/tvPrecioTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Precio Total: "
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:layout_below="@id/tvFechaCompra"
+        android:layout_toEndOf="@id/imgLogoBolsa"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/tvPrecioTotalValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="S/.120.00"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:layout_toEndOf="@id/tvPrecioTotal"
+        android:layout_alignBaseline="@id/tvPrecioTotal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPrecioTotal"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="10dp">
+
+        <Button
+            android:id="@+id/btnVerDetalles"
+            style="@style/ButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ver más detalles"
+            android:textSize="14sp" />
+
+        <ImageButton
+            android:id="@+id/btnDescargarBoleta"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_descargar"
+            android:src="@drawable/ic_descargar"
+            android:contentDescription="@string/descargar_boleta" />
+    </LinearLayout>
+
+</RelativeLayout>

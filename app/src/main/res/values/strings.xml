@@ -20,5 +20,7 @@
     <string name="product_image_description">Descripcion</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="historial_compras">Historial de Compras</string>
+    <string name="no_compras_registradas">No hay compras registradas.</string>
+    <string name="descargar_boleta">Descargar Boleta</string>
 </resources>

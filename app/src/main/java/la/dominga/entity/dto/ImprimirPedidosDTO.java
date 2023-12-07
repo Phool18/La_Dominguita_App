@@ -1,5 +1,6 @@
 package la.dominga.entity.dto;
 
+import java.util.List;
 
 import la.dominga.entity.CarritoDeCompras;
 import la.dominga.entity.DatosCompra;
@@ -8,12 +9,12 @@ public class ImprimirPedidosDTO {
 
     private CarritoDeCompras carritoDeCompras ;
 
-    private Iterable<DatosCompra> detallePedido;
+    private List<DatosCompra> detallePedido;
 
     public ImprimirPedidosDTO() {
     }
 
-    public ImprimirPedidosDTO(CarritoDeCompras carritoDeCompras, Iterable<DatosCompra> detallePedido) {
+    public ImprimirPedidosDTO(CarritoDeCompras carritoDeCompras, List<DatosCompra> detallePedido) {
         this.carritoDeCompras = carritoDeCompras;
         this.detallePedido = detallePedido;
     }
@@ -26,11 +27,11 @@ public class ImprimirPedidosDTO {
         this.carritoDeCompras = carritoDeCompras;
     }
 
-    public Iterable<DatosCompra> getDetallePedido() {
+    public List<DatosCompra> getDetallePedido() {
         return detallePedido;
     }
 
-    public void setDetallePedido(Iterable<DatosCompra> detallePedido) {
+    public void setDetallePedido(List<DatosCompra> detallePedido) {
         this.detallePedido = detallePedido;
     }
 }

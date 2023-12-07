@@ -23,5 +23,12 @@
         <item name="android:textColor">#FFFFFF</item>
         <!-- Aquí puedes agregar otros atributos comunes si los necesitas -->
     </style>
+    <style name="ButtonStyle">
+        <item name="backgroundTint">#A63D40</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:padding">1dp</item>
+        <item name="cornerRadius">16dp</item> <!-- Bordes ovalados -->
+    </style>
+
 
 </resources>
