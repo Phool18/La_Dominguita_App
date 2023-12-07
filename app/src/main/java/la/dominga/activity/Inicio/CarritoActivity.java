@@ -68,16 +68,16 @@ public class CarritoActivity extends AppCompatActivity implements CarritoAdapter
     }
 
     private void actualizarUI() {
-        double subtotal = 0;
+        double subtotalSinImpuestos = 0;
         for (DatosCompra datosCompra : Carrito.obtenerProductos()) {
-            subtotal += datosCompra.getProducto().getPrecio() * datosCompra.getCantidad();
+            subtotalSinImpuestos += datosCompra.getProducto().getPrecio() * datosCompra.getCantidad();
         }
-        double impuestos = subtotal * 0.18; // 18% de impuestos
-        double total = subtotal + impuestos;
+        double impuestos = subtotalSinImpuestos * 0.18; // 18% de impuestos
+        double total = subtotalSinImpuestos - impuestos;
 
-        tvSubtotal.setText("S/. " + String.format("%.2f", subtotal));
+        tvSubtotal.setText("S/. " + String.format("%.2f", total));
         tvImpuestos.setText("S/. " + String.format("%.2f", impuestos));
-        tvTotal.setText("S/. " + String.format("%.2f", total));
+        tvTotal.setText("S/. " + String.format("%.2f", subtotalSinImpuestos));
     }
 
     // Llamado cada vez que un producto es agregado, eliminado o su cantidad es modificada
